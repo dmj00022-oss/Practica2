@@ -8,4 +8,7 @@ add_executable(Practica1 main.cpp
         Especie.h
         LectorCSV.cpp
         LectorCSV.h
-        VDinamico.h)
+        VDinamico.h
+        ListaDEnlazada.h
+        Parque.cpp
+        Parque.h)
