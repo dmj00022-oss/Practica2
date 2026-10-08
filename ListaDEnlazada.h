@@ -93,7 +93,19 @@ T& ListaDEnlazada<T>::fin() {
     return cola->dato;
 }
 ListaDEnlazada<T>::Iterador iterador();
-void insertaInicio(T&objeto);
+template<class T>
+void ListaDEnlazada<T>::insertaInicio(T&objeto) {
+    Nodo *nuevoInicio;
+    nuevoInicio=new Nodo(objeto,nullptr,cabecera);
+    tamañoListaD++;
+    if (cabecera!=nullptr) {
+        cabecera->anterior=nuevoInicio;
+    }
+    if (cola==nullptr) {
+        cola=nuevoInicio;
+    }
+    cabecera=nuevoInicio;
+}
 template<class T>
 void ListaDEnlazada<T>::insertaFin(T&objeto) {
     Nodo *nuevoDato;
