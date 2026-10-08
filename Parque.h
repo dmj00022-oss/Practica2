@@ -6,14 +6,14 @@
 #define PRACTICA1_PARQUE_H
 #include  "Especie.h"
 #include <stdexcept>
+#include "VDinamico.h"
 class Parque {
 public:
-   static const int TAMMAX=1000;
 
 private:
     int codigoParque;
     std::string nombreDelParque;
-    Especie* especies[TAMMAX];
+  VDinamico<Especie> especies;
     int tamEspecies;
 public:
     Parque();
