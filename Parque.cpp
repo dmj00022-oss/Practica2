@@ -8,6 +8,7 @@ Parque::Parque():codigoParque(0),nombreDelParque(""),tamEspecies(0) {
 }
 Parque::Parque(int codigo, const std::string &nombreParque):
 codigoParque(codigo),nombreDelParque(nombreParque),tamEspecies(0) {
+
 }
 Parque::Parque(const Parque &orig):
 codigoParque(orig.codigoParque),nombreDelParque(orig.nombreDelParque),tamEspecies(orig.tamEspecies) {
@@ -16,9 +17,11 @@ codigoParque(orig.codigoParque),nombreDelParque(orig.nombreDelParque),tamEspecie
 Parque::~Parque() {
 
 }
+
 void Parque::insertaEspecie(Especie esp) {
     especies.insertar(esp);
 }
+
 bool Parque::existeNombreComun(const std::string &nombreComun) {
     if (nombreComun=="") {
         throw std::invalid_argument("Parque::existeNombreComun:El nombre pasado esta vacio");
@@ -30,6 +33,7 @@ bool Parque::existeNombreComun(const std::string &nombreComun) {
     }
     return false;
 }
+
 bool Parque::existeNombreCientifico(const std::string &nombreCientifico) {
     if (nombreCientifico=="") {
         throw std::invalid_argument("Parque::existeNombreCientifico:El nombre pasado esta vacio");
