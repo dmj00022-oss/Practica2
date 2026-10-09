@@ -7,21 +7,29 @@
 #include  "Especie.h"
 #include <stdexcept>
 #include "VDinamico.h"
+
 class Parque {
 public:
 
 private:
     int codigoParque;
     std::string nombreDelParque;
-  VDinamico<Especie> especies;
+    VDinamico<Especie> especies;
     int tamEspecies;
+
 public:
     Parque();
+
     Parque(int codigo, const std::string &nombreParque);
+
     Parque(const Parque &orig);
+
     ~Parque();
+
     void insertaEspecie(Especie esp);
+
     bool existeNombreComun(const std::string &nombreComun);
+
     bool existeNombreCientifico(const std::string &nombreCientifico);
 };
 
