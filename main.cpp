@@ -8,7 +8,7 @@
 #include "VDinamico.h"
 #include "Especie.h"
 #include "LectorCSV.h"
-
+a
 //prueba 5
 VDinamico<Especie *> getEspNComun(VDinamico<Especie> &vEspecie) {
     VDinamico<Especie *> auxiliar;
