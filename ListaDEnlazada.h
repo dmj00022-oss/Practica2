@@ -71,12 +71,21 @@ tamañoListaD(0) {
     }
 }
 template<class T>
-ListaDEnlazada<T> &ListaDEnlazada<T> :: operator=(const ListaEnlazada<T> &origen) {
-    Nodo *p;
-    p=cabecera;
+ListaDEnlazada<T> &ListaDEnlazada<T> :: operator=(const ListaDEnlazada<T> &origen) {
+    while (cabecera!=nullptr) {
+        borraInicio();
+    }
+   Nodo *p;
+    cabecera=nullptr;
+    cola=nullptr;
+    p=origen.cabecera;
+    tamañoListaD=0;
     while (p!=nullptr) {
+        insertaFin(p->dato);
+        p=p->siguiente;
 
     }
+    return *this;
 }
 template<class T>
 T& ListaDEnlazada<T>::inicio() {
@@ -92,7 +101,10 @@ T& ListaDEnlazada<T>::fin() {
     }
     return cola->dato;
 }
-ListaDEnlazada<T>::Iterador iterador();
+template<class T>
+ListaDEnlazada<T>::Iterador iterador() {
+
+}
 template<class T>
 void ListaDEnlazada<T>::insertaInicio(T&objeto) {
     Nodo *nuevoInicio;
@@ -137,8 +149,27 @@ void ListaDEnlazada<T>::borraInicio() {
         cola=nullptr;
     }
 }
-void borraFinal();
-void borra(Iterador &i);
+template <class T>
+void ListaDEnlazada<T>::borraFinal() {
+    if (cola==nullptr) {
+        throw std::invalid_argument("ListaDEnlazada<T>::borraFinal: La lista esta vacia ");
+    }
+    tamañoListaD--;
+    Nodo *ultimo;
+    ultimo=cola->anterior;
+    delete cola;
+    cola=ultimo;
+    if (cola!=nullptr) {
+        cola->siguiente=nullptr;
+    }else {
+        cabecera=nullptr;
+    }
+
+}
+template<class T>
+void ListaDEnlazada<T>::borra(Iterador &i) {
+
+}
 template<class T>
 unsigned long int ListaDEnlazada<T>::getTamanio() {
     return tamañoListaD;
