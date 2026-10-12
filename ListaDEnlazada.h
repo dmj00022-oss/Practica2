@@ -64,7 +64,7 @@ public:
 
     T &fin();
 
-    Iterador iterador() const;;
+    Iterador iterador() const; //david de este hace tmb el que devuelve 
 
     void insertaInicio(const T &objeto);
 
