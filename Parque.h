@@ -9,12 +9,13 @@
 #include "VDinamico.h"
 
 class Parque {
-public:
 
 private:
     int codigoParque;
     std::string nombreDelParque;
-    VDinamico<Especie*> especies;  //pq Especie* y no Especie?
+
+    //como sabiamos q habia que ponerla como contenedor?
+    VDinamico<Especie*> especies;  //pq Especie* y no Especie? por ser asociacion?
     int tamEspecies;
 
 public:
