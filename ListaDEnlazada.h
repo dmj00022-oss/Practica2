@@ -64,7 +64,7 @@ public:
 
     T &fin();
 
-    ListaDEnlazada<T>::Iterador iterador();
+    Iterador iterador() const;;
 
     void insertaInicio(const T &objeto);
 
@@ -80,7 +80,9 @@ public:
 
     unsigned long int getTamanio();
 
-    ListaDEnlazada<T> concatena(const ListaDEnlazada<T> &original);
+    ListaDEnlazada<T> concatena(const ListaDEnlazada<T> &nuevaLista);
+
+    ListaDEnlazada<T> operator+(const ListaDEnlazada<T> &nuevaLista);
 };
 
 template<class T>
@@ -145,8 +147,10 @@ T &ListaDEnlazada<T>::fin() {
     return cola->dato;
 }
 
+//este es el q molina quiere preguntar algo
 template<class T>
-ListaDEnlazada<T>::Iterador::iterador() {
+typename ListaDEnlazada<T>::Iterador ListaDEnlazada<T>::iterador() const {  //con typename le aseguras al compiladorr que lo que devuelves es una clase/tipo y no una variable.
+    return Iterador(cabecera);
 }
 
 template<class T>
@@ -268,7 +272,27 @@ unsigned long int ListaDEnlazada<T>::getTamanio() {
 }
 
 template<typename T>
-ListaDEnlazada<T> ListaDEnlazada<T>::concatena(const ListaDEnlazada<T> &original) {
+ListaDEnlazada<T> ListaDEnlazada<T>::concatena(const ListaDEnlazada<T> &nuevaLista) {
+    if ((*this).tamañoListaD!=0 && nuevaLista.tamañoListaD==0)
+        return *this;
+
+    if ((*this).tamañoListaD==0 && nuevaLista.tamañoListaD!=0)
+        return nuevaLista;
+
+    ListaDEnlazada<T> listaFinal(*this);
+
+    Iterador iterador=nuevaLista.iterador();
+
+    while (!iterador.fin) {
+        listaFinal.insertaFin(iterador.dato());
+        iterador.siguiente();
+    }
+    return listaFinal;
+}
+
+template<typename T>
+ListaDEnlazada<T> ListaDEnlazada<T>::operator+(const ListaDEnlazada<T> &nuevaLista) {
+    return this->concatena(nuevaLista);
 }
 
 
