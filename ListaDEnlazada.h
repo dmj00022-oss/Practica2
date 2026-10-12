@@ -30,7 +30,7 @@ public:
             nodo=nodo->anterior;
         }
         void siguiente() {
-            nodo=nodo->siguiente();
+            nodo=nodo->siguiente;
         }
         T &dato() {
             return nodo->dato;
@@ -43,9 +43,9 @@ public:
     T& inicio();
     T& fin();
     ListaDEnlazada<T>::Iterador iterador();
-    void insertaInicio(T&objeto);
-    void insertaFin(T&objeto);
-    void inserta(Iterador &i, T&dato);
+    void insertaInicio(const T&objeto);
+    void insertaFin(const T&objeto);
+    void inserta(Iterador &i, const T&dato);
     void borraInicio();
     void borraFinal();
     void borra(Iterador &i);
@@ -102,11 +102,11 @@ T& ListaDEnlazada<T>::fin() {
     return cola->dato;
 }
 template<class T>
-ListaDEnlazada<T>::Iterador iterador() {
+ListaDEnlazada<T>::Iterador:: iterador() {
 
 }
 template<class T>
-void ListaDEnlazada<T>::insertaInicio(T&objeto) {
+void ListaDEnlazada<T>::insertaInicio(const T&objeto) {
     Nodo *nuevoInicio;
     nuevoInicio=new Nodo(objeto,nullptr,cabecera);
     tamañoListaD++;
@@ -119,7 +119,7 @@ void ListaDEnlazada<T>::insertaInicio(T&objeto) {
     cabecera=nuevoInicio;
 }
 template<class T>
-void ListaDEnlazada<T>::insertaFin(T&objeto) {
+void ListaDEnlazada<T>::insertaFin(const T&objeto) {
     Nodo *nuevoDato;
     nuevoDato=new Nodo(objeto,cola,nullptr);
     tamañoListaD++;
@@ -132,7 +132,24 @@ void ListaDEnlazada<T>::insertaFin(T&objeto) {
     }
     cola=nuevoDato;
 }
-void inserta(Iterador &i, T&dato);
+
+template<class T>
+void ListaDEnlazada<T>::inserta(Iterador &i, const T&dato) {
+if (i.fin()) {
+    throw std::invalid_argument("ListaDEnlazada<T>::inserta:Iterador incorrecto");
+}
+    if (i.nodo==cabecera) {
+        insertaInicio(dato);
+    }else {
+        Nodo* nuevo;
+        nuevo=new Nodo(dato,i.nodo->anterior,i.nodo);
+        i.nodo->anterior->siguiente=nuevo;
+        i.nodo->anterior=nuevo;
+        tamañoListaD++;
+
+    }
+
+}
 template <class T>
 
 void ListaDEnlazada<T>::borraInicio() {
