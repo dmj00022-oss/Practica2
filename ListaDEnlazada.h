@@ -185,7 +185,33 @@ void ListaDEnlazada<T>::borraFinal() {
 }
 template<class T>
 void ListaDEnlazada<T>::borra(Iterador &i) {
-
+if (i.nodo==nullptr) {
+    throw std::invalid_argument("ListaDEnlazada<T>::borra:iterador nulo");
+}
+    if (cabecera==nullptr || cola==nullptr) {
+        throw std::invalid_argument("ListaDEnlazada<T>::borra:La lista esta vacia");
+    }
+    if (cabecera==cola) { //es decir solo hay un elemento
+        cabecera=nullptr;
+        cola=nullptr; //las dos a nullptr porq se va a qedar la lista vacia
+        tamañoListaD--;
+        delete i.nodo;
+        i.nodo=nullptr;
+    }else { //segundo caso, que el que se quiera borrar sea el que apunte la cabecera
+        if (i.nodo==cabecera) {
+            borraInicio();
+        }else {
+            if (i.nodo==cola) {
+                borraFinal(); //tercer caso que el que se quiera borrar sea el ultimo de la lista
+            }else {
+                i.nodo->anterior->siguiente=i.nodo->siguiente;
+                i.nodo->siguiente->anterior=i.nodo->anterior;
+                tamañoListaD--;
+                delete i.nodo;
+                i.nodo=nullptr; //preguntar al profesor si habria que apuntar a null despues del delete
+            }
+        }
+    }
 }
 template<class T>
 unsigned long int ListaDEnlazada<T>::getTamanio() {
