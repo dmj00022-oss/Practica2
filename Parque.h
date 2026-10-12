@@ -14,7 +14,7 @@ public:
 private:
     int codigoParque;
     std::string nombreDelParque;
-    VDinamico<Especie> especies;
+    VDinamico<Especie*> especies;  //pq Especie* y no Especie?
     int tamEspecies;
 
 public:
@@ -26,11 +26,19 @@ public:
 
     ~Parque();
 
-    void insertaEspecie(Especie esp);
+    void insertaEspecie(Especie *esp);
 
     bool existeNombreComun(const std::string &nombreComun);
 
     bool existeNombreCientifico(const std::string &nombreCientifico);
+
+    int getCodigoParque() const;
+    void setCodigoParque(int codigo_parque);
+
+    std::string getNombreParque() const;
+    void setNombreParque(const std::string &nombre_del_parque);
+
+    void borraEspecie(const std::string &nombre_comun);  //Parejas , pone david q este hay q hacerlo al estar en parejas pero no se donde sale exactamente eso en el pdf
 };
 
 
