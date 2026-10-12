@@ -50,6 +50,7 @@ public:
     void borraFinal();
     void borra(Iterador &i);
     unsigned long int getTamanio();
+    ListaDEnlazada<T> concatena(const ListaDEnlazada<T> &original);
 
 };
 template<class T>
