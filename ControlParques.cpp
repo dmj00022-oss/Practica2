@@ -2,10 +2,25 @@
 // Created by molina on 13/10/2026.
 //
 
+#include "LectorCSV.h"
+
 #include "ControlParques.h"
-ControlParques(const std::string &nomFichEspecies, const std::string nomFichParques);
-ControlParques(const ControlParques &original);
-~ControlParques();
+ControlParques::ControlParques(const std::string &nombreFicheroEspecies, const std::string &nomFicheroParques):varieties(),parks() {
+    LectorCSV carga;
+
+    if (!carga.cargar(varieties,nombreFicheroEspecies)) {
+        throw std::runtime_error("Error en el fichero de especies.");
+    }
+
+    varieties.ordenar();
+}
+
+ControlParques::ControlParques(const ControlParques &original);
+
+ControlParques::~ControlParques() {
+
+}
+
 void ControlParques::asignarEspecieParque(Especie *esp, Parque *parq) {
 if (esp==nullptr) {
     throw std::invalid_argument("ControlParques::asignarEspecieParque:Especie no existe");

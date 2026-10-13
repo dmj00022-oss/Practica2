@@ -13,7 +13,7 @@ private:
     VDinamico<Especie> varieties;
     ListaDEnlazada<Parque> parks;
 public:
-    ControlParques(const std::string &nomFichEspecies, const std::string nomFichParques);
+    ControlParques(const std::string &nombreFicheroEspecies, const std::string &nomFicheroParques);
     ControlParques(const ControlParques &original);
     ~ControlParques();
     void asignarEspecieParque(Especie *esp, Parque *parq);
