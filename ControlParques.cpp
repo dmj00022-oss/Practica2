@@ -33,8 +33,21 @@ int ControlParques::contarEspecieParque(const std::string &nomComun) {
 VDinamico<Especie*> ControlParques::listadoEspeciesSubNbre(const std::string &nombre) {
     VDinamico<Especie*> listado;
 for (int i=0;i<varieties.tamañoLogic();i++) {
-    if (varieties[i].getNombreCientifico())
+    if (varieties[i].getNombreCientifico().find(nombre)!=-1) {
+        listado.insertar(&varieties[i]);
+    }
 }
+    return listado;
 }
-Parque *buscarParque(const std::string nombreParque);
+Parque *ControlParques::buscarParque(const std::string &nombreParque) {
+    ListaDEnlazada<Parque>::Iterador it=parks.iterador();
+    while (!it.fin()) { //mientras sea distinto de nullptr
+        if (it.dato().getNombreParque()==nombreParque) {
+            return &it.dato();
+        }else {
+            it.siguiente();
+        }
+    }
+    return nullptr;
+}
 void eliminaEspecieNombreComun(const std::string &nombreEspecieComun);

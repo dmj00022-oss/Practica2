@@ -19,7 +19,7 @@ public:
     void asignarEspecieParque(Especie *esp, Parque *parq);
     int contarEspecieParque(const std::string &nomComun);
     VDinamico<Especie*>listadoEspeciesSubNbre(const std::string &nombre);
-    Parque *buscarParque(const std::string nombreParque);
+    Parque *buscarParque(const std::string &nombreParque);
     void eliminaEspecieNombreComun(const std::string &nombreEspecieComun);
 };
 
