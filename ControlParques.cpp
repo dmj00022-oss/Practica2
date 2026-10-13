@@ -32,7 +32,9 @@ int ControlParques::contarEspecieParque(const std::string &nomComun) {
 }
 VDinamico<Especie*> ControlParques::listadoEspeciesSubNbre(const std::string &nombre) {
     VDinamico<Especie*> listado;
-
+for (int i=0;i<varieties.tamañoLogic();i++) {
+    if (varieties[i].getNombreCientifico())
+}
 }
 Parque *buscarParque(const std::string nombreParque);
 void eliminaEspecieNombreComun(const std::string &nombreEspecieComun);
