@@ -22,9 +22,17 @@ int ControlParques::contarEspecieParque(const std::string &nomComun) {
    int cont=0;
     ListaDEnlazada<Parque>::Iterador it=parks.iterador(); //para empezar en la cabecera de la funcion
     while (!it.fin()) {
+        if (it.dato().existeNombreComun(nomComun)) {
+            cont++;
+            it.siguiente(); //para pasar al siguiente nodo y realizar lo mismo
+        }
 
     }
+    return cont;
 }
-VDinamico<Especie*>listadoEspeciesSubNbre(const std::string &nombre);
+VDinamico<Especie*> ControlParques::listadoEspeciesSubNbre(const std::string &nombre) {
+    VDinamico<Especie*> listado;
+
+}
 Parque *buscarParque(const std::string nombreParque);
 void eliminaEspecieNombreComun(const std::string &nombreEspecieComun);
