@@ -3,17 +3,15 @@
 //
 
 #include "Parque.h"
-Parque::Parque():codigoParque(0),nombreDelParque(""),tamEspecies(0) {  //si tenemos q hacer lo q hace david de poner tmb el vector, en el defecto como lo ponemos?
+Parque::Parque():codigoParque(0),nombreDelParque("") {  //si tenemos q hacer lo q hace david de poner tmb el vector, en el defecto como lo ponemos?
 
 }
 
-Parque::Parque(int codigo, const std::string &nombreParque):codigoParque(codigo),nombreDelParque(nombreParque),
-tamEspecies(0) {   // pq especies() ? (david pone contains())
+Parque::Parque(int codigo, const std::string &nombreParque):codigoParque(codigo),nombreDelParque(nombreParque){   // pq especies() ? (david pone contains())
 
 }
 
-Parque::Parque(const Parque &orig):codigoParque(orig.codigoParque),nombreDelParque(orig.nombreDelParque),
-    tamEspecies(orig.tamEspecies),especies(orig.especies) {   //¿no tendriamos que hacer un for?
+Parque::Parque(const Parque &orig):codigoParque(orig.codigoParque),nombreDelParque(orig.nombreDelParque),especies(orig.especies) {   //¿no tendriamos que hacer un for?
 
 }
 
