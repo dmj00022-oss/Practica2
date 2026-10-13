@@ -32,7 +32,7 @@ bool Parque::existeNombreComun(const std::string &nombreComun) {
     if (nombreComun==" ") {
         throw std::invalid_argument("Parque::existeNombreComun:El nombre pasado esta vacio");
     }
-    for (int i=0;i<tamEspecies;i++) {
+    for (int i=0;i<especies.tamañoLogic();i++) {
         if (especies[i]->getNombreComun()==nombreComun) {
             return true;
         }
@@ -44,7 +44,7 @@ bool Parque::existeNombreCientifico(const std::string &nombreCientifico) {
     if (nombreCientifico==" ") {
         throw std::invalid_argument("Parque::existeNombreCientifico:El nombre pasado esta vacio");
     }
-    for (int i=0;i<tamEspecies;i++) {   // david usa contains.tama() por que el no ha puesto como atributo privado un tamaaño del vector (tenemos que informarnos)
+    for (int i=0;i<especies.tamañoLogic();i++) {   // david usa contains.tama() por que el no ha puesto como atributo privado un tamaaño del vector (tenemos que informarnos)
         if (nombreCientifico==especies[i]->getNombreCientifico()) {
             return true;
         }

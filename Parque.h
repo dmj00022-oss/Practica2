@@ -16,7 +16,6 @@ private:
 
     //como sabiamos q habia que ponerla como contenedor?
     VDinamico<Especie*> especies;  //pq Especie* y no Especie? por ser asociacion?
-    int tamEspecies;
 
 public:
     Parque();
