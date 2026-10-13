@@ -56,7 +56,7 @@ public:
 
     ListaDEnlazada<T>(const ListaDEnlazada<T> &origen);
 
-    ListaDEnlazada<T> &operator=(const ListaEnlazada<T> &origen);
+    ListaDEnlazada<T> &operator=(const ListaDEnlazada<T> &origen);
 
     ~ListaDEnlazada<T>();
 

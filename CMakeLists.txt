@@ -11,4 +11,6 @@ add_executable(Practica1 main.cpp
         VDinamico.h
         ListaDEnlazada.h
         Parque.cpp
-        Parque.h)
+        Parque.h
+        ControlParques.cpp
+        ControlParques.h)

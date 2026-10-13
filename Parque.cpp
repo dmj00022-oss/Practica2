@@ -22,11 +22,14 @@ Parque::~Parque() {
 }
 
 void Parque::insertaEspecie(Especie *esp) {
+    if (esp==nullptr) {
+        throw std::invalid_argument("Parque::insertaEspecie: La especie no existe");
+    }
     especies.insertar(esp);
 }
 
 bool Parque::existeNombreComun(const std::string &nombreComun) {
-    if (nombreComun=="") {
+    if (nombreComun==" ") {
         throw std::invalid_argument("Parque::existeNombreComun:El nombre pasado esta vacio");
     }
     for (int i=0;i<tamEspecies;i++) {
