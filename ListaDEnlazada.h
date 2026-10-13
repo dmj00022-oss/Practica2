@@ -270,7 +270,7 @@ template<class T>
 unsigned long int ListaDEnlazada<T>::getTamanio() {
     return tamañoListaD;
 }
-
+a
 template<typename T>
 ListaDEnlazada<T> ListaDEnlazada<T>::concatena(const ListaDEnlazada<T> &nuevaLista) {
     if ((*this).tamañoListaD!=0 && nuevaLista.tamañoListaD==0)
