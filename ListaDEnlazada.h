@@ -14,7 +14,8 @@ private :
         T dato;
         Nodo *anterior, *siguiente;
 
-        Nodo(const T &aDato, Nodo *aAnterior, Nodo *aSiguiente) : dato(aDato), anterior(aAnterior), siguiente(aSiguiente) {
+        Nodo(const T &aDato, Nodo *aAnterior, Nodo *aSiguiente) : dato(aDato), anterior(aAnterior),
+                                                                  siguiente(aSiguiente) {
         }
 
         ~Nodo() {
@@ -29,7 +30,7 @@ public:
     public:
         Nodo *nodo;
 
-        Iterador()=default;
+        Iterador() = default;
 
         Iterador(Nodo *aNodo) : nodo(aNodo) {
         }
@@ -105,21 +106,20 @@ ListaDEnlazada<T>::ListaDEnlazada(const ListaDEnlazada<T> &origen) : tamañoList
 
 template<class T>
 ListaDEnlazada<T> &ListaDEnlazada<T>::operator=(const ListaDEnlazada<T> &origen) {
-    if (this!=&origen) {
-        while (cabecera != nullptr) {
-            borraInicio();
-        }
-        Nodo *p;
-        cabecera = nullptr;
-        cola = nullptr;
-        p = origen.cabecera;
-        tamañoListaD = 0;
-        while (p != nullptr) {
-            insertaFin(p->dato);
-            p = p->siguiente;
-        }
+    while (cabecera != nullptr) {
+        borraInicio();
     }
-        return *this;
+    Nodo *p;
+    cabecera = nullptr;
+    cola = nullptr;
+    p = origen.cabecera;
+    tamañoListaD = 0;
+    while (p != nullptr) {
+        insertaFin(p->dato);
+        p = p->siguiente;
+    }
+
+    return *this;
 }
 
 template<typename T>
@@ -128,7 +128,7 @@ ListaDEnlazada<T>::~ListaDEnlazada() {
         Nodo *aBorrar = cabecera;
         cabecera = cabecera->siguiente;
         delete aBorrar;
-    }// al salir de aqui cabecera apunta al siguiente del ultimo , por tanto a null
+    } // al salir de aqui cabecera apunta al siguiente del ultimo , por tanto a null
 
     cola = nullptr;
     tamañoListaD = 0;
@@ -153,7 +153,8 @@ T &ListaDEnlazada<T>::fin() {
 
 //este es el q molina quiere preguntar algo
 template<class T>
-typename ListaDEnlazada<T>::Iterador ListaDEnlazada<T>::iterador() const {  //con typename le aseguras al compiladorr que lo que devuelves es una clase/tipo y no una variable.
+typename ListaDEnlazada<T>::Iterador ListaDEnlazada<T>::iterador() const {
+    //con typename le aseguras al compiladorr que lo que devuelves es una clase/tipo y no una variable.
     return Iterador(cabecera);
 }
 
@@ -270,6 +271,7 @@ void ListaDEnlazada<T>::borra(Iterador &i) {
         }
     }
 }
+
 template<class T>
 unsigned long int ListaDEnlazada<T>::getTamanio() {
     return tamañoListaD;
@@ -277,9 +279,9 @@ unsigned long int ListaDEnlazada<T>::getTamanio() {
 
 template<typename T>
 ListaDEnlazada<T> ListaDEnlazada<T>::concatena(const ListaDEnlazada<T> &nuevaLista) {
-    ListaDEnlazada<T> listaFinal(*this);  //hacemos una copia de this sin tocar el original
+    ListaDEnlazada<T> listaFinal(*this); //hacemos una copia de this sin tocar el original
 
-    Iterador iterador=nuevaLista.iterador();
+    Iterador iterador = nuevaLista.iterador();
 
     while (!iterador.fin()) {
         listaFinal.insertaFin(iterador.dato());
@@ -295,4 +297,3 @@ ListaDEnlazada<T> ListaDEnlazada<T>::operator+(const ListaDEnlazada<T> &nuevaLis
 
 
 #endif //PRACTICA1_LISTADENLAZADA_H
-
