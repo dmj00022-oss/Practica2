@@ -10,6 +10,8 @@
 
 #include "Especie.h"
 #include "VDinamico.h"
+#include "ListaDEnlazada.h"
+#include "Parque.h"
 
 // Lee el fichero data/arbolado-especies.csv: valores separados por comas,
 // donde un valor puede ir entrecomillado y contener comas y comillas
@@ -22,6 +24,7 @@
 class LectorCSV {
 public:
     bool cargar(VDinamico<Especie> &vector, const std::string& rutaFichero);
+    bool cargarParques(ListaDEnlazada<Parque> &lista,const std::string &rutaFichero);
 
     std::size_t numeroEspecies() const;
     std::size_t filasDescartadas() const;

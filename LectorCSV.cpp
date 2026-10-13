@@ -57,6 +57,41 @@ bool LectorCSV::cargar(VDinamico<Especie> &vector, const std::string& rutaFicher
     return true;
 }
 
+bool LectorCSV::cargarParques(ListaDEnlazada<Parque> &lista,const std::string &rutaFichero) {
+    filasDescartadas_ = 0;
+
+    std::ifstream fichero(rutaFichero);
+    if (!fichero.is_open()) {
+        return false;
+    }
+
+    std::string linea;
+    if (std::getline(fichero, linea)) {
+        eliminarBOM(linea);
+    }
+
+    //Declaradas fuera del bucle por eficiencia
+    string codigoDelParque, nombreDelParque;
+    while (std::getline(fichero, linea)) {
+        if (linea.empty()) {
+            continue;
+        }
+
+        if (contarCampos(linea) != 2) {
+            ++filasDescartadas_;
+            continue;
+        }
+
+        codigoDelParque = extraerCampo(linea, 0);
+        nombreDelParque = extraerCampo(linea, 1);
+        lista.insertaFin(Parque(stoi(codigoDelParque), nombreDelParque));
+
+    }
+    numeroEspecies_= lista.getTamanio();
+    return true;
+}
+
+
 /**
  * @brief Número de especies leídas correctamente.
  * @return Cantidad de especies mostradas durante la última llamada a cargar().

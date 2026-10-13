@@ -14,7 +14,7 @@ private :
         T dato;
         Nodo *anterior, *siguiente;
 
-        Nodo(T &aDato, Nodo *aAnterior, Nodo *aSiguiente) : dato(aDato), anterior(aAnterior), siguiente(aSiguiente) {
+        Nodo(const T &aDato, Nodo *aAnterior, Nodo *aSiguiente) : dato(aDato), anterior(aAnterior), siguiente(aSiguiente) {
         }
 
         ~Nodo() {
@@ -28,6 +28,8 @@ public:
     class Iterador {
     public:
         Nodo *nodo;
+
+        Iterador()=default;
 
         Iterador(Nodo *aNodo) : nodo(aNodo) {
         }
@@ -103,19 +105,21 @@ ListaDEnlazada<T>::ListaDEnlazada(const ListaDEnlazada<T> &origen) : tamañoList
 
 template<class T>
 ListaDEnlazada<T> &ListaDEnlazada<T>::operator=(const ListaDEnlazada<T> &origen) {
-    while (cabecera != nullptr) {
-        borraInicio();
+    if (this!=&origen) {
+        while (cabecera != nullptr) {
+            borraInicio();
+        }
+        Nodo *p;
+        cabecera = nullptr;
+        cola = nullptr;
+        p = origen.cabecera;
+        tamañoListaD = 0;
+        while (p != nullptr) {
+            insertaFin(p->dato);
+            p = p->siguiente;
+        }
     }
-    Nodo *p;
-    cabecera = nullptr;
-    cola = nullptr;
-    p = origen.cabecera;
-    tamañoListaD = 0;
-    while (p != nullptr) {
-        insertaFin(p->dato);
-        p = p->siguiente;
-    }
-    return *this;
+        return *this;
 }
 
 template<typename T>
@@ -214,6 +218,7 @@ void ListaDEnlazada<T>::borraInicio() {
     } else {
         cola = nullptr;
     }
+    tamañoListaD--;
 }
 
 template<class T>
@@ -272,17 +277,11 @@ unsigned long int ListaDEnlazada<T>::getTamanio() {
 
 template<typename T>
 ListaDEnlazada<T> ListaDEnlazada<T>::concatena(const ListaDEnlazada<T> &nuevaLista) {
-    if ((*this).tamañoListaD!=0 && nuevaLista.tamañoListaD==0)
-        return *this;
-
-    if ((*this).tamañoListaD==0 && nuevaLista.tamañoListaD!=0)
-        return nuevaLista;
-
-    ListaDEnlazada<T> listaFinal(*this);
+    ListaDEnlazada<T> listaFinal(*this);  //hacemos una copia de this sin tocar el original
 
     Iterador iterador=nuevaLista.iterador();
 
-    while (!iterador.fin) {
+    while (!iterador.fin()) {
         listaFinal.insertaFin(iterador.dato());
         iterador.siguiente();
     }

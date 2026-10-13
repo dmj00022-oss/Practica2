@@ -5,64 +5,89 @@
 #include "LectorCSV.h"
 
 #include "ControlParques.h"
-ControlParques::ControlParques(const std::string &nombreFicheroEspecies, const std::string &nomFicheroParques):varieties(),parks() {
+
+ControlParques::ControlParques(const std::string &nombreFicheroEspecies,
+                               const std::string &nomFicheroParques) : varieties(), parks() {
     LectorCSV carga;
 
-    if (!carga.cargar(varieties,nombreFicheroEspecies)) {
-        throw std::runtime_error("Error en el fichero de especies.");
+    if (!carga.cargar(varieties, nombreFicheroEspecies)) {
+        throw std::runtime_error("[ControlParques::ControlParques]:Error al cargar fichero de especies.");
     }
 
     varieties.ordenar();
+
+    if (!carga.cargarParques(parks, nomFicheroParques))
+        throw std::runtime_error("[ControlParques::ControlParques]:Error al cargar fichero de parques.");
 }
 
-ControlParques::ControlParques(const ControlParques &original);
+ControlParques::ControlParques(const ControlParques &original) : varieties(original.varieties), parks(original.parks) {
+
+}
 
 ControlParques::~ControlParques() {
 
 }
 
-void ControlParques::asignarEspecieParque(Especie *esp, Parque *parq) {
-if (esp==nullptr) {
-    throw std::invalid_argument("ControlParques::asignarEspecieParque:Especie no existe");
-}
-    if (parq==nullptr) {
+void ControlParques::asignarEspecieParque(Especie *PuntEsp, Parque *PuntParq) {
+    if (PuntEsp == nullptr) {
+        throw std::invalid_argument("ControlParques::asignarEspecieParque:Especie no existe");
+    }
+    if (PuntParq == nullptr) {
         throw std::invalid_argument("ControlParques::asignarEspecieParque:El parque no existe");
     }
-    parq->insertaEspecie(esp);
+    PuntParq->insertaEspecie(PuntEsp);
 }
-int ControlParques::contarEspecieParque(const std::string &nomComun) {
-    if (nomComun==" ") {
+
+int ControlParques::contarEspecieParque(const std::string &nombreComun) {
+    if (nombreComun == "") {
         throw std::invalid_argument("ControlParques::contarEspecieParque:La cadena esta vacia");
     }
-   int cont=0;
-    ListaDEnlazada<Parque>::Iterador it=parks.iterador(); //para empezar en la cabecera de la funcion
+    int contador = 0;
+    ListaDEnlazada<Parque>::Iterador it = parks.iterador(); //para empezar en la cabecera de la funcion
     while (!it.fin()) {
-        if (it.dato().existeNombreComun(nomComun)) {
-            cont++;
+        if (it.dato().existeNombreComun(nombreComun)) {
+            contador++;
             it.siguiente(); //para pasar al siguiente nodo y realizar lo mismo
         }
+    }
+    return contador;
+}
 
+VDinamico<Especie *> ControlParques::listadoEspeciesSubNbre(const std::string &nombre) {
+    VDinamico<Especie *> listado;
+    for (int i = 0; i < varieties.tamañoLogic(); i++) {
+        if (varieties[i].getNombreCientifico().find(nombre) != -1) {
+            listado.insertar(&varieties[i]);
+        }
     }
-    return cont;
-}
-VDinamico<Especie*> ControlParques::listadoEspeciesSubNbre(const std::string &nombre) {
-    VDinamico<Especie*> listado;
-for (int i=0;i<varieties.tamañoLogic();i++) {
-    if (varieties[i].getNombreCientifico().find(nombre)!=-1) {
-        listado.insertar(&varieties[i]);
-    }
-}
     return listado;
 }
+
 Parque *ControlParques::buscarParque(const std::string &nombreParque) {
-    ListaDEnlazada<Parque>::Iterador it=parks.iterador();
-    while (!it.fin()) { //mientras sea distinto de nullptr
-        if (it.dato().getNombreParque()==nombreParque) {
+    ListaDEnlazada<Parque>::Iterador it = parks.iterador();
+    while (!it.fin()) {
+        //mientras sea distinto de nullptr
+        if (it.dato().getNombreParque() == nombreParque) {
             return &it.dato();
-        }else {
+        } else {
             it.siguiente();
         }
     }
     return nullptr;
 }
-void eliminaEspecieNombreComun(const std::string &nombreEspecieComun);
+
+void ControlParques::eliminaEspecieNombreComun(const std::string &nombreEspecieComun) {
+    if (nombreEspecieComun == "")
+        throw std::invalid_argument("[ControlParques::eliminaEspecieNombreComun]:nombre vacio.");
+
+    ListaDEnlazada<Parque>::Iterador iterador; //he tenido que hacer el constructor por defecto de iterador para esto
+
+    for (int i = 0; i < varieties.tamañoLogic(); i++) {
+        if (varieties[i].getNombreComun() == nombreEspecieComun)
+            varieties.borrar(i);
+    }
+
+    for (iterador = parks.iterador(); !iterador.fin(); iterador.siguiente()) {
+        iterador.dato().borraEspecie(nombreEspecieComun);
+    }
+}
