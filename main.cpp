@@ -179,7 +179,12 @@ int main() {
 
 
         //prueba 4
+        VDinamico<Especie*> espe=controlDelParque.listadoEspeciesSubNbre("rosa");
+        for (int i=0;i<espe.tamañoLogic();i++) {
+            std::cout<<
+        }
         
+
     } catch (const std::out_of_range &fallo) {
         std::cerr << fallo.what() << std::endl;
     } catch (const std::invalid_argument &fallo) {
