@@ -112,6 +112,7 @@ int main() {
         std::cout << std::endl;
         std::cout << "SEXTA PRUEBA: " << std::endl;
         it1 = prog1.iterador();
+
         while (!it1.fin()) {
             if (it1.dato() % 10 == 0) {
                 prog1.borra(it1);

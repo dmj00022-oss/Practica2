@@ -12,18 +12,27 @@ class ControlParques {
 private:
     VDinamico<Especie> varieties;
     ListaDEnlazada<Parque> parks;
+
 public:
     ControlParques(const std::string &nombreFicheroEspecies, const std::string &nomFicheroParques);
-    ControlParques(const ControlParques &original);
-    ~ControlParques();
-    void asignarEspecieParque(Especie *esp, Parque *parq);
-    int contarEspecieParque(const std::string &nomComun);
-    VDinamico<Especie*>listadoEspeciesSubNbre(const std::string &nombre);
-    Parque *buscarParque(const std::string &nombreParque);
-    void eliminaEspecieNombreComun(const std::string &nombreEspecieComun);
-    void eliminaParque(const std::string &nombreParque);
-    void enlazarLasEspeciesEnParques();
 
+    ControlParques(const ControlParques &original);
+
+    ~ControlParques();
+
+    void asignarEspecieParque(Especie *esp, Parque *parq);
+
+    int contarEspecieParque(const std::string &nomComun);
+
+    VDinamico<Especie *> listadoEspeciesSubNbre(const std::string &nombre);
+
+    Parque *buscarParque(const std::string &nombreParque);
+
+    void eliminaEspecieNombreComun(const std::string &nombreEspecieComun);
+
+    void eliminaParque(const std::string &nombreParque);
+
+    void enlazarLasEspeciesEnParques();
 };
 
 #endif //PRACTICA1_CONTROLPARQUES_H

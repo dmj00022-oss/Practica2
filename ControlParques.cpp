@@ -26,6 +26,7 @@ void ControlParques::enlazarLasEspeciesEnParques() {
                     if (itera.dato().getCodigoParque() % 2 != 0) {
                         asignarEspecieParque(&varieties[i], &itera.dato());
                     }
+                    itera.siguiente();
                 }
             }
         }

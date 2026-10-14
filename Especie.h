@@ -34,9 +34,9 @@ inline TiposPlanta pasarDeStringAPlanta(const std::string &str) {
     if (str == "ARBUSTO") return ARBUSTO;
     else if (str == "CONIFERA") return CONIFERA;
     else if (str == "FRONDOSA") return FRONDOSA;
-    else if (str == "SUBTROPICAL_TROPICAL") return SUBTROPICAL_TROPICAL;
-    else if (str == "CACTACEA_SUCULENTA") return CACTACEA_SUCULENTA;
-    else if (str == "TAPIZANTE_TREPADORA") return TAPIZANTE_TREPADORA;
+    else if (str == "SUBTROPICAL/TROPICAL") return SUBTROPICAL_TROPICAL;
+    else if (str == "CACTACEA/SUCULENTA") return CACTACEA_SUCULENTA;
+    else if (str == "TAPIZANTE/TREPADORA") return TAPIZANTE_TREPADORA;
     else if (str == "HERB_PERENNES") return HERB_PERENNES;
     else if (str == "PALMACEA") return PALMACEA;
     else if (str == "HERB_ANUAL") return HERB_ANUAL;
