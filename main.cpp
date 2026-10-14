@@ -141,6 +141,22 @@ int main() {
                 std::cout<<"En el PARQUE PRINCESA LEONOR no se encuentra la especie cuyo nombre común es Arce de sierra. "<<std::endl;
         }
 
+        //prueba 2
+        p=controlDelParque.buscarParque("PARQUE MADRID RIO");
+        if (p) {
+            if (p->existeNombreCientifico("Hebe floribunda"))
+                std::cout<<"En el PARQUE MADRID RIO se encuentra la especie cuyo nombre cientifico es Hebe floribunda.";
+            else
+                std::cout<<"En el PARQUE MADRID RIO no se encuentra la especie cuyo nombre cientifico es Hebe floribunda.";
+        }
+
+        if (p) {
+            if (p->existeNombreCientifico("Ananas comosa"))
+                std::cout<<"En el PARQUE MADRID RIO se encuentra la especie cuyo nombre cientifico es Ananas comosa.";
+            else
+                std::cout<<"En el PARQUE MADRID RIO no se encuentra la especie cuyo nombre cientifico es Ananas comosa.";
+        }
+
     } catch (const std::out_of_range &fallo) {
         std::cerr << fallo.what() << std::endl;
     } catch (const std::invalid_argument &fallo) {

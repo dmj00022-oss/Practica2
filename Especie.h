@@ -12,7 +12,7 @@ enum TiposPlanta {
     TAPIZANTE_TREPADORA, HERB_PERENNES, PALMACEA, HERB_ANUAL, HERB_ANUALES, OTRO // cambio el no por OTRO
 };
 
-inline std::string tipoPlantaToString(const TiposPlanta &tipo) {
+inline std::string pasarDePlantaAString(const TiposPlanta &tipo) {
     switch (tipo) {
         case ARBUSTO: return "ARBUSTO";
         case CONIFERA: return "CONIFERA";
@@ -30,7 +30,7 @@ inline std::string tipoPlantaToString(const TiposPlanta &tipo) {
     }
 }
 
-inline TiposPlanta stringToTipoPlanta(const std::string &str) {
+inline TiposPlanta pasarDeStringAPlanta(const std::string &str) {
     if (str == "ARBUSTO") return ARBUSTO;
     else if (str == "CONIFERA") return CONIFERA;
     else if (str == "FRONDOSA") return FRONDOSA;
