@@ -24,7 +24,7 @@ inline std::string pasarDePlantaAString(const TiposPlanta &tipo) {
         case PALMACEA: return "PALMACEA";
         case HERB_ANUAL: return "HERB_ANUAL";
         case HERB_ANUALES: return "HERB_ANUALES";
-        case OTRO: return " ";
+        case OTRO: return "";
         default:
             throw std::runtime_error("Tipo de planta desconocido");
     }
@@ -41,7 +41,7 @@ inline TiposPlanta pasarDeStringAPlanta(const std::string &str) {
     else if (str == "PALMACEA") return PALMACEA;
     else if (str == "HERB_ANUAL") return HERB_ANUAL;
     else if (str == "HERB_ANUALES") return HERB_ANUALES;
-    else if (str == " " || str == "OTRO") return OTRO;
+    else if (str == "" || str == "OTRO") return OTRO;
 
     throw std::runtime_error("Tipo de planta desconocido: " + str);
 }

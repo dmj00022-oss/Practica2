@@ -26,7 +26,7 @@ void Parque::insertaEspecie(Especie *esp) {
 }
 
 bool Parque::existeNombreComun(const std::string &nombreComun) {
-    if (nombreComun==" ") {
+    if (nombreComun=="") {
         throw std::invalid_argument("Parque::existeNombreComun:El nombre pasado esta vacio");
     }
     for (int i=0;i<especies.tamañoLogic();i++) {
@@ -38,7 +38,7 @@ bool Parque::existeNombreComun(const std::string &nombreComun) {
 }
 
 bool Parque::existeNombreCientifico(const std::string &nombreCientifico) {
-    if (nombreCientifico==" ") {
+    if (nombreCientifico=="") {
         throw std::invalid_argument("Parque::existeNombreCientifico:El nombre pasado esta vacio");
     }
     for (int i=0;i<especies.tamañoLogic();i++) {
