@@ -41,6 +41,9 @@ VDinamico<Especie *> buscaPalabra(VDinamico<Especie> &orden, const std::string &
 int main() {
     try {
 //Programa 1
+
+        //Programa 2
+
     } catch (const std::out_of_range &fallo) {
         std::cerr << fallo.what() << std::endl;
     } catch (const std::invalid_argument &fallo) {
