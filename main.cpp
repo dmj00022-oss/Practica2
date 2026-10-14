@@ -120,6 +120,8 @@ int main() {
         }
         mostrarPrueba1(prog1);
 
+        std::cout<<std::endl;
+        std::cout<<std::endl;
 
         //Programa 2
         //prueba 1
