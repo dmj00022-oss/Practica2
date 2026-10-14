@@ -37,10 +37,86 @@ VDinamico<Especie *> buscaPalabra(VDinamico<Especie> &orden, const std::string &
     }
     return sol;
 }
-
+//creamos este metodo para no tener que repetir codigo al imprimir el primer metodo
+void mostrarPrueba1(const ListaDEnlazada<int> listaEnteros) {
+    ListaDEnlazada<int>::Iterador it=listaEnteros.iterador();
+    while (!it.fin()) {
+        std::cout << it.dato() << " ";
+        it.siguiente();
+    }
+}
 int main() {
     try {
 //Programa 1
+        //a)
+ListaDEnlazada<int> prog1;
+ListaDEnlazada<int>::Iterador it1;
+        //b)
+        for (int i=101;i<=200;i++) {
+            prog1.insertaFin(i);
+        }
+        mostrarPrueba1(prog1);
+        //c)
+        std::cout<<std::endl;
+        std::cout<<"SEGUNDA PRUEBA: "<<std::endl;
+        for (int i=1;i<=98;i++) {
+            prog1.insertaInicio(i);
+        }
+        mostrarPrueba1(prog1);
+
+        //d)
+        std::cout<<std::endl;
+        std::cout<<"TERCERA PRUEBA: "<<std::endl;
+        it1=prog1.iterador();
+
+        while (it1.dato()!=101) {
+            it1.siguiente();
+        }
+        prog1.inserta(it1,100);
+        mostrarPrueba1(prog1);
+
+        //e)
+        std::cout<<std::endl;
+        std::cout<<"CUARTA PRUEBA: "<<std::endl;
+        it1=prog1.iterador();
+        bool asignado=false;
+        while (!it1.fin()&& !asignado) {
+            if (it1.dato()==98) {
+                it1.siguiente();
+                prog1.inserta(it1,99);
+                asignado=true;
+            }else {
+                it1.siguiente();
+            }
+        }
+        mostrarPrueba1(prog1);
+        //f)
+        std::cout<<std::endl;
+        std::cout<<"QUINTA PRUEBA: "<<std::endl;
+        it1=prog1.iterador();
+        for (int i=0;i<10;i++) {
+            prog1.borraInicio();
+            it1.siguiente();
+        }
+        it1=prog1.iterador();
+
+        for (int i=0;i<10;i++) {
+            prog1.borraFinal();
+            it1.siguiente();
+        }
+        mostrarPrueba1(prog1);
+        //g)
+        std::cout<<std::endl;
+        std::cout<<"SEXTA PRUEBA: "<<std::endl;
+        it1=prog1.iterador();
+        while (!it1.fin()) {
+            if (it1.dato()%10==0) {
+                prog1.borra(it1);
+            }
+            it1.siguiente();
+        }
+        mostrarPrueba1(prog1);
+
 
         //Programa 2
 
