@@ -74,8 +74,9 @@ int ControlParques::contarEspecieParque(const std::string &nombreComun) {
     while (!it.fin()) {
         if (it.dato().existeNombreComun(nombreComun)) {
             contador++;
-            it.siguiente(); //para pasar al siguiente nodo y realizar lo mismo
         }
+        it.siguiente(); //para pasar al siguiente nodo y realizar lo mismo
+
     }
     return contador;
 }
