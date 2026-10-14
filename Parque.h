@@ -37,7 +37,7 @@ public:
     std::string getNombreParque() const;
     void setNombreParque(const std::string &nombre_del_parque);
 
-    void borraEspecie(const std::string &nombre_comun);  //Parejas , pone david q este hay q hacerlo al estar en parejas pero no se donde sale exactamente eso en el pdf
+    void borraEspecie(const std::string &nombre_comun);  //Parejas del antiguo pdf
 };
 
 

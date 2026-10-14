@@ -39,7 +39,7 @@ void ControlParques::asignarEspecieParque(Especie *PuntEsp, Parque *PuntParq) {
 }
 
 int ControlParques::contarEspecieParque(const std::string &nombreComun) {
-    if (nombreComun == "") {
+    if (nombreComun == " ") {
         throw std::invalid_argument("ControlParques::contarEspecieParque:La cadena esta vacia");
     }
     int contador = 0;
@@ -77,17 +77,31 @@ Parque *ControlParques::buscarParque(const std::string &nombreParque) {
 }
 
 void ControlParques::eliminaEspecieNombreComun(const std::string &nombreEspecieComun) {
-    if (nombreEspecieComun == "")
+    if (nombreEspecieComun == " ")
         throw std::invalid_argument("[ControlParques::eliminaEspecieNombreComun]:nombre vacio.");
 
-    ListaDEnlazada<Parque>::Iterador iterador; //he tenido que hacer el constructor por defecto de iterador para esto
+    ListaDEnlazada<Parque>::Iterador iterador=parks.iterador(); //he tenido que hacer el constructor por defecto de iterador para esto
 
     for (int i = 0; i < varieties.tamañoLogic(); i++) {
         if (varieties[i].getNombreComun() == nombreEspecieComun)
             varieties.borrar(i);
     }
 
-    for (iterador = parks.iterador(); !iterador.fin(); iterador.siguiente()) {
+    while( !iterador.fin()) {
         iterador.dato().borraEspecie(nombreEspecieComun);
+        iterador.siguiente();
+    }
+}
+
+void ControlParques::eliminaParque(const std::string &nombreParque) {
+    if (nombreParque==" ") {
+        throw std::invalid_argument("ControlParques::eliminaParque:El nombre del parque esta vacio ");
+    }
+    ListaDEnlazada<Parque>::Iterador iterador=parks.iterador();
+    while (!iterador.fin()) {
+        if (nombreParque==iterador.dato().getNombreParque()) {
+            parks.borra(iterador);
+        }
+        iterador.siguiente();
     }
 }

@@ -3,15 +3,14 @@
 //
 
 #include "Parque.h"
-Parque::Parque():codigoParque(0),nombreDelParque("") {  //si tenemos q hacer lo q hace david de poner tmb el vector, en el defecto como lo ponemos?
+Parque::Parque():codigoParque(0),nombreDelParque(" ") {  //si tenemos q hacer lo q hace david de poner tmb el vector, en el defecto como lo ponemos?
 
 }
 
-Parque::Parque(int codigo, const std::string &nombreParque):codigoParque(codigo),nombreDelParque(nombreParque){   // pq especies() ? (david pone contains())
-
+Parque::Parque(int codigo, const std::string &nombreParque):codigoParque(codigo),nombreDelParque(nombreParque){
 }
 
-Parque::Parque(const Parque &orig):codigoParque(orig.codigoParque),nombreDelParque(orig.nombreDelParque),especies(orig.especies) {   //¿no tendriamos que hacer un for?
+Parque::Parque(const Parque &orig):codigoParque(orig.codigoParque),nombreDelParque(orig.nombreDelParque),especies(orig.especies) {
 
 }
 
@@ -71,7 +70,7 @@ void Parque::borraEspecie(const std::string &nombre_comun) {
     for (int i=0;i<especies.tamañoLogic();i++) {
         if (especies[i]->getNombreComun()==nombre_comun) {
             especies.borrar(i);
-            i--;  //pq deberia poner i-- si el metodo borra ya hace directamente tamañoLogic--?
+            i--;
         }
     }
 }

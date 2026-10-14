@@ -21,6 +21,8 @@ public:
     VDinamico<Especie*>listadoEspeciesSubNbre(const std::string &nombre);
     Parque *buscarParque(const std::string &nombreParque);
     void eliminaEspecieNombreComun(const std::string &nombreEspecieComun);
+    void eliminaParque(const std::string &nombreParque);
+
 };
 
 #endif //PRACTICA1_CONTROLPARQUES_H

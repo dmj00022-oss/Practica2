@@ -25,7 +25,7 @@ VDinamico<Especie *> buscaPalabra(VDinamico<Especie> &orden, const std::string &
     for (int i = 0; i < orden.tamañoLogic(); i++) {
         int j = 0;
         std::string cadenaEntera = orden[i].getNombreCientifico();
-        std::string nombre = "";
+        std::string nombre = " ";
 
         while (j < cadenaEntera.length() && cadenaEntera[j] != ' ') {
             nombre += cadenaEntera[j];

@@ -222,6 +222,7 @@ void ListaDEnlazada<T>::borraInicio() {
     tamañoListaD--;
 }
 
+
 template<class T>
 void ListaDEnlazada<T>::borraFinal() {
     if (cola == nullptr) {
@@ -253,7 +254,6 @@ void ListaDEnlazada<T>::borra(Iterador &i) {
         cola = nullptr; //las dos a nullptr porq se va a qedar la lista vacia
         tamañoListaD--;
         delete i.nodo;
-        i.nodo = nullptr;
     } else {
         //segundo caso, que el que se quiera borrar sea el que apunte la cabecera
         if (i.nodo == cabecera) {
@@ -266,7 +266,7 @@ void ListaDEnlazada<T>::borra(Iterador &i) {
                 i.nodo->siguiente->anterior = i.nodo->anterior;
                 tamañoListaD--;
                 delete i.nodo;
-                i.nodo = nullptr; //preguntar al profesor si habria que apuntar a null despues del delete
+                //preguntar al profesor si habria que apuntar a null despues del delete
             }
         }
     }
