@@ -6,6 +6,32 @@
 
 #include "ControlParques.h"
 
+void ControlParques::enlazarLasEspeciesEnParques() {
+    for (unsigned long int i = 0; i < varieties.tamañoLogic(); i++) {
+        TiposPlanta tipoDePlanta = varieties[i].getTipoPlanta();
+        if (tipoDePlanta == ARBUSTO || tipoDePlanta == CONIFERA || tipoDePlanta == PALMACEA ||
+            tipoDePlanta == HERB_PERENNES || tipoDePlanta == FRONDOSA) {
+            ListaDEnlazada<Parque>::Iterador itera = parks.iterador();
+            while (!itera.fin()) {
+                if (itera.dato().getCodigoParque() % 2 == 0) {
+                    asignarEspecieParque(&varieties[i], &itera.dato());
+                }
+                itera.siguiente();
+            }
+        } else {
+            if (tipoDePlanta == CACTACEA_SUCULENTA || tipoDePlanta == TAPIZANTE_TREPADORA || tipoDePlanta == HERB_ANUAL
+                ||tipoDePlanta == HERB_ANUALES || tipoDePlanta == SUBTROPICAL_TROPICAL) {
+                ListaDEnlazada<Parque>::Iterador itera = parks.iterador();
+                while (!itera.fin()) {
+                    if (itera.dato().getCodigoParque() % 2 != 0) {
+                        asignarEspecieParque(&varieties[i], &itera.dato());
+                    }
+                }
+            }
+        }
+    }
+}
+
 ControlParques::ControlParques(const std::string &nombreFicheroEspecies,
                                const std::string &nomFicheroParques) : varieties(), parks() {
     LectorCSV carga;
@@ -18,14 +44,14 @@ ControlParques::ControlParques(const std::string &nombreFicheroEspecies,
 
     if (!carga.cargarParques(parks, nomFicheroParques))
         throw std::runtime_error("[ControlParques::ControlParques]:Error al cargar fichero de parques.");
+
+    enlazarLasEspeciesEnParques();
 }
 
 ControlParques::ControlParques(const ControlParques &original) : varieties(original.varieties), parks(original.parks) {
-
 }
 
 ControlParques::~ControlParques() {
-
 }
 
 void ControlParques::asignarEspecieParque(Especie *PuntEsp, Parque *PuntParq) {
@@ -57,6 +83,7 @@ VDinamico<Especie *> ControlParques::listadoEspeciesSubNbre(const std::string &n
     VDinamico<Especie *> listado;
     for (int i = 0; i < varieties.tamañoLogic(); i++) {
         if (varieties[i].getNombreCientifico().find(nombre) != -1) {
+            //¿find?
             listado.insertar(&varieties[i]);
         }
     }
@@ -80,26 +107,27 @@ void ControlParques::eliminaEspecieNombreComun(const std::string &nombreEspecieC
     if (nombreEspecieComun == " ")
         throw std::invalid_argument("[ControlParques::eliminaEspecieNombreComun]:nombre vacio.");
 
-    ListaDEnlazada<Parque>::Iterador iterador=parks.iterador(); //he tenido que hacer el constructor por defecto de iterador para esto
+    ListaDEnlazada<Parque>::Iterador iterador = parks.iterador();
+    //he tenido que hacer el constructor por defecto de iterador para esto
 
     for (int i = 0; i < varieties.tamañoLogic(); i++) {
         if (varieties[i].getNombreComun() == nombreEspecieComun)
             varieties.borrar(i);
     }
 
-    while( !iterador.fin()) {
+    while (!iterador.fin()) {
         iterador.dato().borraEspecie(nombreEspecieComun);
         iterador.siguiente();
     }
 }
 
 void ControlParques::eliminaParque(const std::string &nombreParque) {
-    if (nombreParque==" ") {
+    if (nombreParque == " ") {
         throw std::invalid_argument("ControlParques::eliminaParque:El nombre del parque esta vacio ");
     }
-    ListaDEnlazada<Parque>::Iterador iterador=parks.iterador();
+    ListaDEnlazada<Parque>::Iterador iterador = parks.iterador();
     while (!iterador.fin()) {
-        if (nombreParque==iterador.dato().getNombreParque()) {
+        if (nombreParque == iterador.dato().getNombreParque()) {
             parks.borra(iterador);
         }
         iterador.siguiente();

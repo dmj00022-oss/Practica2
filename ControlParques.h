@@ -22,6 +22,7 @@ public:
     Parque *buscarParque(const std::string &nombreParque);
     void eliminaEspecieNombreComun(const std::string &nombreEspecieComun);
     void eliminaParque(const std::string &nombreParque);
+    void enlazarLasEspeciesEnParques();
 
 };
 

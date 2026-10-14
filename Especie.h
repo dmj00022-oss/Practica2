@@ -85,6 +85,7 @@ public:
     bool operator<(const Especie &especie) const;
 
     bool operator==(const Especie &especie) const;
+
 };
 
 
