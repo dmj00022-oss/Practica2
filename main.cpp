@@ -197,6 +197,17 @@ int main() {
         std::cout<<std::endl;
         int numAbetos=controlDelParque.contarEspecieParque("Abeto");
         std::cout<<"El numero de especies con nombre comun abeto es: "<<numAbetos<<std::endl;
+        //prueba 6
+        controlDelParque.eliminaParque("VIVERO DE MIGAS CALIENTES");
+        Parque *pa6=controlDelParque.buscarParque("VIVERO DE MIGAS CALIENTES");
+        if (pa6) {
+            std::cout<<"VIVERO DE MIGAS CALIENTES no esta eliminado ";
+        }else {
+            std::cout<<"VIVERO DE MIGAS CALIENTES  esta eliminada ";
+
+        }
+
+
 
 
 
