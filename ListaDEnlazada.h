@@ -256,15 +256,15 @@ void ListaDEnlazada<T>::borra(Iterador &i) {
         //es decir solo hay un elemento
         cabecera = nullptr;
         cola = nullptr; //las dos a nullptr porq se va a qedar la lista vacia
-        tamañoListaD--;
+        tamañoListaD=0;
         delete i.nodo;
     } else {
-        //segundo caso, que el que se quiera borrar sea el que apunte la cabecera
-        if (i.nodo == cabecera) {
-            borraInicio();
+        //segundo caso que el que se quiera borrar sea el ultimo de la lista
+        if (i.nodo == cola) {
+            borraFinal();
         } else {
-            if (i.nodo == cola) {
-                borraFinal(); //tercer caso que el que se quiera borrar sea el ultimo de la lista
+            if (i.nodo == cabecera) {//tercer caso, que el que se quiera borrar sea el que apunte la cabecera
+                borraInicio();
             } else {
                 i.nodo->anterior->siguiente = i.nodo->siguiente;
                 i.nodo->siguiente->anterior = i.nodo->anterior;

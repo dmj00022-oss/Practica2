@@ -133,6 +133,7 @@ int main() {
 
 
         Parque *p=controlDelParque.buscarParque("PARQUE PRINCESA LEONOR");
+        std::cout<<std::endl;
         if (p) {
             if (p->existeNombreComun("Eucalipto rojo"))
                 std::cout<<"En el PARQUE PRINCESA LEONOR se encuentra la especie cuyo nombre común es eucalipto rojo. "<<std::endl;
@@ -151,16 +152,16 @@ int main() {
         p=controlDelParque.buscarParque("PARQUE MADRID RIO");
         if (p) {
             if (p->existeNombreCientifico("Hebe floribunda"))
-                std::cout<<"En el PARQUE MADRID RIO se encuentra la especie cuyo nombre cientifico es Hebe floribunda.";
+                std::cout<<"En el PARQUE MADRID RIO se encuentra la especie cuyo nombre cientifico es Hebe floribunda."<<std::endl;
             else
-                std::cout<<"En el PARQUE MADRID RIO no se encuentra la especie cuyo nombre cientifico es Hebe floribunda.";
+                std::cout<<"En el PARQUE MADRID RIO no se encuentra la especie cuyo nombre cientifico es Hebe floribunda."<<std::endl;
         }
 
         if (p) {
             if (p->existeNombreCientifico("Ananas comosa"))
-                std::cout<<"En el PARQUE MADRID RIO se encuentra la especie cuyo nombre cientifico es Ananas comosa.";
+                std::cout<<"En el PARQUE MADRID RIO se encuentra la especie cuyo nombre cientifico es Ananas comosa."<<std::endl;
             else
-                std::cout<<"En el PARQUE MADRID RIO no se encuentra la especie cuyo nombre cientifico es Ananas comosa.";
+                std::cout<<"En el PARQUE MADRID RIO no se encuentra la especie cuyo nombre cientifico es Ananas comosa."<<std::endl;
         }
 
     } catch (const std::out_of_range &fallo) {
