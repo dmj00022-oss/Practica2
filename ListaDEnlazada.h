@@ -36,7 +36,11 @@ public:
         }
 
         bool fin() {
-            return nodo == nullptr;
+            if (nodo==nullptr) {
+                return true;
+            }else {
+                return false;
+            }
         }
 
         void anterior() {
