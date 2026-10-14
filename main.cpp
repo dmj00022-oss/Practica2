@@ -194,6 +194,11 @@ int main() {
             std::cout<<std::endl;
         }
         //prueba 5
+        std::cout<<std::endl;
+        int numAbetos=controlDelParque.contarEspecieParque("Abeto");
+        std::cout<<"El numero de especies con nombre comun abeto es: "<<numAbetos<<std::endl;
+
+
 
 
 
