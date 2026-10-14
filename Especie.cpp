@@ -4,12 +4,12 @@
 
 #include "Especie.h"
 
-Especie::Especie():codigoEspecie(""),nombreComun(""),nombreCientifico(""),tipoPlanta("") {
+Especie::Especie():codigoEspecie(""),nombreComun(""),nombreCientifico(""),tipoPlanta(OTRO) {
 
 }
 
 Especie::Especie(const std::string &codE,const std::string &nComun,const std::string &nCientifico,
-    const std::string &tipo):codigoEspecie(codE),nombreComun(nComun),nombreCientifico(nCientifico),
+    TiposPlanta tipo):codigoEspecie(codE),nombreComun(nComun),nombreCientifico(nCientifico),
     tipoPlanta(tipo) {
 
 }
@@ -47,11 +47,11 @@ void Especie::setNombreCientifico(const std::string &nombre_cientifico) {
     this->nombreCientifico = nombre_cientifico;
 }
 
-std::string Especie::getTipoPlanta() const {
+TiposPlanta Especie::getTipoPlanta() const {
     return tipoPlanta;
 }
 
-void Especie::setTipoPlanta(const std::string &tipo_planta) {
+void Especie::setTipoPlanta(TiposPlanta tipo_planta) {
     this->tipoPlanta = tipo_planta;
 }
 
