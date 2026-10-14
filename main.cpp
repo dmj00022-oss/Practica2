@@ -182,7 +182,19 @@ int main() {
 
 
 
+        VDinamico<Especie*> espe=controlDelParque.listadoEspeciesSubNbre("rosa");
+        std::cout<<"Especies con subnombre [rosa]: "<<std::endl;
+        for (int i=0;i<espe.tamañoLogic();i++) {
+            std::cout<<"Posicion: "<<i<<std::endl;
+            std::cout<<" Codigo= " << espe[i]->getCodigoEspecie() <<std::endl;
+            std::cout<<" NombreCient.=" << espe[i]->getNombreCientifico()<<std::endl;
+            std::cout<<" NombreComun=" << espe[i]->getNombreComun() <<std::endl;
+            std::cout<<" TipoPlanta=" << pasarDePlantaAString(espe[i]->getTipoPlanta())<<std::endl;
+
+            std::cout<<std::endl;
+        }
         //prueba 5
+
 
 
     } catch (const std::out_of_range &fallo) {
