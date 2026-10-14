@@ -111,16 +111,18 @@ void ControlParques::eliminaEspecieNombreComun(const std::string &nombreEspecieC
 
     ListaDEnlazada<Parque>::Iterador iterador = parks.iterador();
     //he tenido que hacer el constructor por defecto de iterador para esto
-
-    for (int i = 0; i < varieties.tamañoLogic(); i++) {
-        if (varieties[i].getNombreComun() == nombreEspecieComun)
-            varieties.borrar(i);
-    }
-
     while (!iterador.fin()) {
         iterador.dato().borraEspecie(nombreEspecieComun);
         iterador.siguiente();
     }
+    int i=0;
+    while (i<varieties.tamañoLogic()) {
+        if (varieties[i].getNombreComun() == nombreEspecieComun)
+            varieties.borrar(i);
+        i++;
+    }
+
+
 }
 
 void ControlParques::eliminaParque(const std::string &nombreParque) {
