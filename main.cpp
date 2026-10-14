@@ -164,7 +164,18 @@ int main() {
                 std::cout<<"En el PARQUE MADRID RIO no se encuentra la especie cuyo nombre cientifico es Ananas comosa."<<std::endl;
         }
         //prueba 3
-        Parque *pa3=controlDelParque.("PARQUE JUAN CARLOS III");
+        Parque *pa3=controlDelParque.buscarParque("PARQUE JUAN CARLOS III");
+        if (pa3) {
+            std::cout<<"El codigo del parque PARQUE JUAN CARLOS III es: "<<pa3->getCodigoParque();
+        }else {
+            std::cout<<"No esta el parque "<<std::endl;
+        }
+        Parque *pa4=controlDelParque.buscarParque("VIVERO DE MIGAS CALIENTES");
+        if (pa4) {
+            std::cout<<"El codigo del parque VIVERO DE MIGAS CALIENTES es: "<<pa4->getCodigoParque();
+        }else {
+            std::cout<<"No esta el parque "<<std::endl;
+        }
 
 
         //prueba 4
