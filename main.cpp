@@ -126,7 +126,7 @@ int main() {
 
         //Programa 2
         //prueba 1
-        std::cout << "Prueba 2:Funcionalidad de ControlParques: " << std::endl;
+        std::cout << "Programa 2:Funcionalidad de ControlParques: " << std::endl;
         ControlParques controlDelParque("../arbolado-especies.csv", "../parques.csv");           //el constructor de ControlParques llama a ordenar de vDinamico de Especies
 
         Parque *p=controlDelParque.buscarParque("PARQUE PRINCESA LEONOR");
