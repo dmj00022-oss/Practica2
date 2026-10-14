@@ -163,6 +163,8 @@ int main() {
             else
                 std::cout<<"En el PARQUE MADRID RIO no se encuentra la especie cuyo nombre cientifico es Ananas comosa."<<std::endl;
         }
+        //prueba 3
+        Parque *pa3=controlDelParque.("PARQUE JUAN CARLOS III");
 
     } catch (const std::out_of_range &fallo) {
         std::cerr << fallo.what() << std::endl;
