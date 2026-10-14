@@ -26,7 +26,7 @@ inline std::string pasarDePlantaAString(const TiposPlanta &tipo) {
         case HERB_ANUALES: return "HERB_ANUALES";
         case OTRO: return "";
         default:
-            throw std::runtime_error("[pasarDePlantaAString]: Este tipo de planta no se encuentra en la lista.");  // preguntar si se puede poner otro error
+            throw std::invalid_argument("[pasarDePlantaAString]: Este tipo de planta no se encuentra en la lista.");  // preguntar si se puede poner otro error
     }
 }
 
@@ -43,7 +43,7 @@ inline TiposPlanta pasarDeStringAPlanta(const std::string &str) {
     else if (str == "HERB_ANUALES") return HERB_ANUALES;
     else if (str == "" || str == "OTRO") return OTRO;
 
-    throw std::runtime_error("[pasarDeStringAPlanta]: Este tipo de planta no se encuentra en la lista: " + str);
+    throw std::invalid_argument("[pasarDeStringAPlanta]: Este tipo de planta no se encuentra en la lista: " + str);
 }
 
 
