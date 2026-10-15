@@ -23,7 +23,7 @@ private :
     };
 
     Nodo *cabecera, *cola;
-    unsigned long int tamañoListaD;
+    unsigned long int tamanioDeLaListaDoblementeEnlazada;
 
 public:
     class Iterador {
@@ -93,12 +93,12 @@ public:
 };
 
 template<class T>
-ListaDEnlazada<T>::ListaDEnlazada() : cabecera(nullptr), cola(nullptr), tamañoListaD(0) {
+ListaDEnlazada<T>::ListaDEnlazada() : cabecera(nullptr), cola(nullptr), tamanioDeLaListaDoblementeEnlazada(0) {
 
 }
 
 template<class T>
-ListaDEnlazada<T>::ListaDEnlazada(const ListaDEnlazada<T> &origen) : tamañoListaD(0) {
+ListaDEnlazada<T>::ListaDEnlazada(const ListaDEnlazada<T> &origen) : tamanioDeLaListaDoblementeEnlazada(0) {
     Nodo *NodoOriginal;
     cola = nullptr;
     cabecera = nullptr;
@@ -118,7 +118,7 @@ ListaDEnlazada<T> &ListaDEnlazada<T>::operator=(const ListaDEnlazada<T> &origen)
     cabecera = nullptr;
     cola = nullptr;
     NodoOriginal = origen.cabecera;
-    tamañoListaD = 0;
+    tamanioDeLaListaDoblementeEnlazada = 0;
     while (NodoOriginal != nullptr) {
         insertaFin(NodoOriginal->dato);
         NodoOriginal = NodoOriginal->siguiente;
@@ -133,7 +133,7 @@ ListaDEnlazada<T>::~ListaDEnlazada() {
         borraInicio();
     } // al salir de aqui cabecera apunta al siguiente del ultimo , por tanto a null
 
-    tamañoListaD = 0;
+    tamanioDeLaListaDoblementeEnlazada = 0;
 }
 
 
@@ -162,7 +162,7 @@ template<class T>
 void ListaDEnlazada<T>::insertaInicio(const T &objeto) {
     Nodo *nuevoInicio;
     nuevoInicio = new Nodo(objeto, nullptr, cabecera);
-    tamañoListaD++;
+    tamanioDeLaListaDoblementeEnlazada++;
 
     if (cola == nullptr) {
         cola = nuevoInicio;
@@ -179,7 +179,7 @@ template<class T>
 void ListaDEnlazada<T>::insertaFin(const T &objeto) {
     Nodo *nuevoDato;
     nuevoDato = new Nodo(objeto, cola, nullptr);
-    tamañoListaD++;
+    tamanioDeLaListaDoblementeEnlazada++;
 
     if (cabecera == nullptr) {
         cabecera = nuevoDato;
@@ -202,7 +202,7 @@ void ListaDEnlazada<T>::inserta(Iterador &i, const T &dato) {
         nuevo = new Nodo(dato, i.nodo->anterior, i.nodo);
         i.nodo->anterior->siguiente = nuevo;
         i.nodo->anterior = nuevo;
-        tamañoListaD++;
+        tamanioDeLaListaDoblementeEnlazada++;
     }
 }
 
@@ -222,7 +222,7 @@ void ListaDEnlazada<T>::borraInicio() {
     } else {
         cola = nullptr;
     }
-    tamañoListaD--;
+    tamanioDeLaListaDoblementeEnlazada--;
 }
 
 
@@ -231,7 +231,7 @@ void ListaDEnlazada<T>::borraFinal() {
     if (cola == nullptr) {
         throw std::invalid_argument("ListaDEnlazada<T>::borraFinal: La lista esta vacia ");
     }
-    tamañoListaD--;
+    tamanioDeLaListaDoblementeEnlazada--;
     Nodo *ultimo;
     ultimo = cola->anterior;
     delete cola;
@@ -256,7 +256,7 @@ void ListaDEnlazada<T>::borra(Iterador &i) {
         //es decir solo hay un elemento
         cabecera = nullptr;
         cola = nullptr; //las dos a nullptr porq se va a qedar la lista vacia
-        tamañoListaD=0;
+        tamanioDeLaListaDoblementeEnlazada=0;
         delete i.nodo;
     } else {
         //segundo caso que el que se quiera borrar sea el ultimo de la lista
@@ -268,7 +268,7 @@ void ListaDEnlazada<T>::borra(Iterador &i) {
             } else {
                 i.nodo->anterior->siguiente = i.nodo->siguiente;
                 i.nodo->siguiente->anterior = i.nodo->anterior;
-                tamañoListaD--;
+                tamanioDeLaListaDoblementeEnlazada--;
                 delete i.nodo;
             }
         }
@@ -277,7 +277,7 @@ void ListaDEnlazada<T>::borra(Iterador &i) {
 
 template<class T>
 unsigned long int ListaDEnlazada<T>::getTamanio() {
-    return tamañoListaD;
+    return tamanioDeLaListaDoblementeEnlazada;
 }
 
 template<typename T>

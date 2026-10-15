@@ -12,7 +12,7 @@
 template<class T>
 class VDinamico {
 private:
-    unsigned long int tamañoFisico, tamañoLogico;
+    unsigned long int tamanioFisico, tamanioLogico;
     T *vec;
 
     void cogerMemoria();
@@ -100,8 +100,8 @@ void VDinamico<T>::tamanioBase(unsigned long int &tamanio) {
 template<class T>
 void VDinamico<T>::cogerMemoria() {
     T *vAux;
-    vAux = new T[tamañoFisico = tamañoFisico * 2];
-    for (unsigned long int i = 0; i < tamañoLogico; i++) {
+    vAux = new T[tamanioFisico = tamanioFisico * 2];
+    for (unsigned long int i = 0; i < tamanioLogico; i++) {
         vAux[i] = vec[i];
     }
     delete[] vec;
@@ -116,8 +116,8 @@ void VDinamico<T>::cogerMemoria() {
 template<class T>
 void VDinamico<T>::liberarMemoria() {
     T *aux;
-    aux = new T[tamañoFisico = tamañoFisico / 2];
-    for (unsigned long int i = 0; i < tamañoLogico; i++) {
+    aux = new T[tamanioFisico = tamanioFisico / 2];
+    for (unsigned long int i = 0; i < tamanioLogico; i++) {
         aux[i] = vec[i];
     }
     delete[] vec;
@@ -129,8 +129,8 @@ void VDinamico<T>::liberarMemoria() {
  * @brief Crea un vector sin elementos y deja el tamaño fisico a 1 y el logico a 0
  */
 template<class T>
-VDinamico<T>::VDinamico() : tamañoFisico(1), tamañoLogico(0) {
-    vec = new T[tamañoFisico];
+VDinamico<T>::VDinamico() : tamanioFisico(1), tamanioLogico(0) {
+    vec = new T[tamanioFisico];
 }
 
 
@@ -141,10 +141,10 @@ VDinamico<T>::VDinamico() : tamañoFisico(1), tamañoLogico(0) {
  * @param dato dato con el que rellenamos el vector
  */
 template<class T>
-VDinamico<T>::VDinamico(unsigned long int tamaño, T &dato) : tamañoLogico(tamaño) {
+VDinamico<T>::VDinamico(unsigned long int tamaño, T &dato) : tamanioLogico(tamaño) {
     tamanioBase(tamaño);
-    vec = new T[tamañoFisico = tamaño];
-    for (unsigned long int i = 0; i < tamañoLogico; i++) {
+    vec = new T[tamanioFisico = tamaño];
+    for (unsigned long int i = 0; i < tamanioLogico; i++) {
         vec[i] = dato;
     }
 }
@@ -155,9 +155,9 @@ VDinamico<T>::VDinamico(unsigned long int tamaño, T &dato) : tamañoLogico(tama
  * @param orig vector que es copiado
  */
 template<class T>
-VDinamico<T>::VDinamico(const VDinamico<T> &orig) : tamañoFisico(orig.tamañoFisico), tamañoLogico(orig.tamañoLogico) {
-    vec = new T[tamañoFisico = orig.tamañoFisico];
-    for (int i = 0; i < orig.tamañoLogico; i++) {
+VDinamico<T>::VDinamico(const VDinamico<T> &orig) : tamanioFisico(orig.tamanioFisico), tamanioLogico(orig.tamanioLogico) {
+    vec = new T[tamanioFisico = orig.tamanioFisico];
+    for (int i = 0; i < orig.tamanioLogico; i++) {
         vec[i] = orig.vec[i];
     }
 }
@@ -173,15 +173,15 @@ VDinamico<T>::VDinamico(const VDinamico<T> &orig) : tamañoFisico(orig.tamañoFi
  */
 template<class T>
 VDinamico<T>::VDinamico(const VDinamico<T> &origen, unsigned long int posicionInicial, unsigned long int numElementos) {
-    if (numElementos + posicionInicial > origen.tamañoLogico || posicionInicial >= origen.tamañoLogico) {
+    if (numElementos + posicionInicial > origen.tamanioLogico || posicionInicial >= origen.tamanioLogico) {
         throw std::out_of_range(
             "VDinamico<T>::VDinamico: Has introducido un numero de elementos para copiar incorrecto");
     }
     unsigned long int tamañoo = numElementos;
     tamanioBase(tamañoo);
-    tamañoLogico = numElementos;
-    vec = new T[tamañoFisico = tamañoo];
-    for (unsigned long int i = 0; i < tamañoLogico; i++) {
+    tamanioLogico = numElementos;
+    vec = new T[tamanioFisico = tamañoo];
+    for (unsigned long int i = 0; i < tamanioLogico; i++) {
         // asi porque en vec[0] se le asignara el origen.vec[0+posicionInicial] que sera el primer dato que queremos copiar, asin sucesivamente
         vec[i] = origen.vec[i + posicionInicial];
     }
@@ -197,9 +197,9 @@ template<class T>
 VDinamico<T> &VDinamico<T>::operator=(const VDinamico<T> &origen) {
     if (this != &origen) {
         delete[] vec;
-        tamañoLogico = origen.tamañoLogico;
-        vec = new T[tamañoFisico = origen.tamañoFisico];
-        for (unsigned int i = 0; i < tamañoLogico; i++) {
+        tamanioLogico = origen.tamanioLogico;
+        vec = new T[tamanioFisico = origen.tamanioFisico];
+        for (unsigned int i = 0; i < tamanioLogico; i++) {
             vec[i] = origen.vec[i];
         }
     }
@@ -215,7 +215,7 @@ VDinamico<T> &VDinamico<T>::operator=(const VDinamico<T> &origen) {
  */
 template<class T>
 T &VDinamico<T>::operator[](unsigned long int posicionDelVector) {
-    if (posicionDelVector >= tamañoLogico) {
+    if (posicionDelVector >= tamanioLogico) {
         throw std::out_of_range("VDinamico<T>::operator[]:La posicion que has introducido es incorreta");
     }
     return vec[posicionDelVector];
@@ -232,26 +232,26 @@ template<class T>
 void VDinamico<T>::insertar(const T &nuevoDato, unsigned long int posicion) {
     bool alFinal = (posicion == UINT_MAX);
 
-    if (!alFinal && posicion > tamañoLogico) {
+    if (!alFinal && posicion > tamanioLogico) {
         throw std::out_of_range("VDinamico<T>::insertar: La posicion es incorrecta");
     }
 
     if (alFinal) {
-        posicion = tamañoLogico;   // se traduce a "insertar justo después del último"
+        posicion = tamanioLogico;   // se traduce a "insertar justo después del último"
     }
 
-    if (tamañoLogico == tamañoFisico) {
+    if (tamanioLogico == tamanioFisico) {
         cogerMemoria();
     }
 
     // Desplaza hacia la derecha todo lo que haya desde 'posicion' en adelante.
     // Si posicion == tamañoLogico (insertar al final), el bucle no llega a ejecutarse.
-    for (unsigned long int i = tamañoLogico; i > posicion; i--) {
+    for (unsigned long int i = tamanioLogico; i > posicion; i--) {
         vec[i] = vec[i - 1];
     }
 
     vec[posicion] = nuevoDato;
-    tamañoLogico++;
+    tamanioLogico++;
 }
 
 
@@ -265,24 +265,24 @@ void VDinamico<T>::insertar(const T &nuevoDato, unsigned long int posicion) {
  */
 template<typename T>
 T VDinamico<T>::borrar(unsigned long int posicion) {
-    if (tamañoLogico == 0)
+    if (tamanioLogico == 0)
         throw std::length_error("[VDinamico<T>::borrar]:Error, el tamaño logico del vector es cero.");
 
     T aux;
     if (posicion == UINT_MAX) {
-        aux = vec[tamañoLogico - 1];
-        tamañoLogico--;
+        aux = vec[tamanioLogico - 1];
+        tamanioLogico--;
     } else {
-        if (posicion >= tamañoLogico)
+        if (posicion >= tamanioLogico)
             throw std::out_of_range("[VDinamico<T>::borrar]:Error,La posicion erronea.");
 
         aux = vec[posicion];
-        for (unsigned long int i = posicion; i < tamañoLogico - 1; i++) {
+        for (unsigned long int i = posicion; i < tamanioLogico - 1; i++) {
             vec[i] = vec[i + 1];
         }
-        tamañoLogico--;
+        tamanioLogico--;
     }
-    if (tamañoLogico * 3 < tamañoFisico)
+    if (tamanioLogico * 3 < tamanioFisico)
         liberarMemoria();
     return aux;
 }
@@ -294,7 +294,7 @@ T VDinamico<T>::borrar(unsigned long int posicion) {
  */
 template<class T>
 void VDinamico<T>::ordenar() {
-    std::sort(vec, vec + tamañoLogico);
+    std::sort(vec, vec + tamanioLogico);
 }
 
 
@@ -314,7 +314,7 @@ VDinamico<T>::~VDinamico() {
  */
 template<class T>
 unsigned long int VDinamico<T>::tamanioLogic() {
-    return tamañoLogico; //
+    return tamanioLogico; //
 }
 
 
@@ -326,7 +326,7 @@ unsigned long int VDinamico<T>::tamanioLogic() {
  */
 template<typename T>
 int VDinamico<T>::busquedaDicotomica(const T &dato) {
-    int superior = tamañoLogico - 1;
+    int superior = tamanioLogico - 1;
     int inferior = 0;
     int posicion;
     for (unsigned long int i = 0; superior >= inferior; i++) {
