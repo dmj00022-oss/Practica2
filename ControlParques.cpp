@@ -85,7 +85,7 @@ VDinamico<Especie *> ControlParques::listadoEspeciesSubNbre(const std::string &n
     VDinamico<Especie *> listado;
     for (int i = 0; i < varieties.tamañoLogic(); i++) {
         if (varieties[i].getNombreCientifico().find(nombre) != -1) {
-            //¿find?
+            //si se ha encontrado:
             listado.insertar(&varieties[i]);
         }
     }
