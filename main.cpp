@@ -51,6 +51,8 @@ void mostrarPrueba1(const ListaDEnlazada<int> listaEnteros) {
 int main() {
     try {
         //Programa 1
+
+        std::cout<<"Programa de prueba I: probar la lista doblemente enlazada con enteros: "<<std::endl;
         //a)
         ListaDEnlazada<int> prog1;
         ListaDEnlazada<int>::Iterador it1;
@@ -124,6 +126,7 @@ int main() {
         std::cout << std::endl;
         std::cout << std::endl;
 
+
         //Programa 2
         //prueba 1
         std::cout << "Programa 2:Funcionalidad de ControlParques: " << std::endl;
@@ -136,66 +139,50 @@ int main() {
         std::cout << std::endl;
         if (p) {
             if (p->existeNombreComun("Eucalipto rojo"))
-                std::cout <<
-                        "En el PARQUE PRINCESA LEONOR se encuentra la especie cuyo nombre común es eucalipto rojo. " <<
-                        std::endl;
+                std::cout <<"En el PARQUE PRINCESA LEONOR se encuentra la especie cuyo nombre común es eucalipto rojo. " <<std::endl;
             else
-                std::cout <<
-                        "En el PARQUE PRINCESA LEONOR no se encuentra la especie cuyo nombre común es eucalipto rojo. "
-                        << std::endl;
+                std::cout <<"En el PARQUE PRINCESA LEONOR no se encuentra la especie cuyo nombre común es eucalipto rojo. "<< std::endl;
         }
 
         if (p) {
             if (p->existeNombreComun("Arce de sierra"))
-                std::cout <<
-                        "En el PARQUE PRINCESA LEONOR se encuentra la especie cuyo nombre común es Arce de sierra. " <<
-                        std::endl;
+                std::cout <<"En el PARQUE PRINCESA LEONOR se encuentra la especie cuyo nombre común es Arce de sierra. " <<std::endl;
             else
-                std::cout <<
-                        "En el PARQUE PRINCESA LEONOR no se encuentra la especie cuyo nombre común es Arce de sierra. "
-                        << std::endl;
+                std::cout <<"En el PARQUE PRINCESA LEONOR no se encuentra la especie cuyo nombre común es Arce de sierra. "<< std::endl;
         }
 
         //prueba 2
         p = controlDelParque.buscarParque("PARQUE MADRID RIO");
         if (p) {
             if (p->existeNombreCientifico("Hebe floribunda"))
-                std::cout <<
-                        "En el PARQUE MADRID RIO se encuentra la especie cuyo nombre cientifico es Hebe floribunda." <<
-                        std::endl;
+                std::cout <<"En el PARQUE MADRID RIO se encuentra la especie cuyo nombre cientifico es Hebe floribunda." <<std::endl;
             else
-                std::cout <<
-                        "En el PARQUE MADRID RIO no se encuentra la especie cuyo nombre cientifico es Hebe floribunda."
-                        << std::endl;
+                std::cout <<"En el PARQUE MADRID RIO no se encuentra la especie cuyo nombre cientifico es Hebe floribunda."<< std::endl;
         }
 
         if (p) {
             if (p->existeNombreCientifico("Ananas comosa"))
-                std::cout << "En el PARQUE MADRID RIO se encuentra la especie cuyo nombre cientifico es Ananas comosa."
-                        << std::endl;
+                std::cout << "En el PARQUE MADRID RIO se encuentra la especie cuyo nombre cientifico es Ananas comosa."<< std::endl;
             else
-                std::cout <<
-                        "En el PARQUE MADRID RIO no se encuentra la especie cuyo nombre cientifico es Ananas comosa." <<
-                        std::endl;
+                std::cout <<"En el PARQUE MADRID RIO no se encuentra la especie cuyo nombre cientifico es Ananas comosa." <<std::endl;
         }
+
         //prueba 3
         Parque *pa3 = controlDelParque.buscarParque("PARQUE JUAN CARLOS III");
         if (pa3) {
             std::cout << "El codigo del parque PARQUE JUAN CARLOS III es: " << pa3->getCodigoParque();
         } else {
-            std::cout << "No esta el parque " << std::endl;
+            std::cout << "No se ha encontrado el PARQUE JUAN CARLOS III " << std::endl;
         }
         Parque *pa4 = controlDelParque.buscarParque("VIVERO DE MIGAS CALIENTES");
         if (pa4) {
             std::cout << "El codigo del parque VIVERO DE MIGAS CALIENTES es: " << pa4->getCodigoParque();
         } else {
-            std::cout << "No esta el parque " << std::endl;
+            std::cout << "No se ha encontrado el VIVERO DE MIGAS CALIENTES" << std::endl;
         }
 
 
         //prueba 4
-
-
         VDinamico<Especie *> espe = controlDelParque.listadoEspeciesSubNbre("rosa");
         std::cout << "Especies con subnombre [rosa]: " << std::endl;
         for (int i = 0; i < espe.tamañoLogic(); i++) {
@@ -218,8 +205,9 @@ int main() {
         if (pa6) {
             std::cout << "VIVERO DE MIGAS CALIENTES no esta eliminado ";
         } else {
-            std::cout << "VIVERO DE MIGAS CALIENTES  esta eliminada ";
+            std::cout << "VIVERO DE MIGAS CALIENTES  esta eliminado ";
         }
+
     } catch (const std::out_of_range &fallo) {
         std::cerr << fallo.what() << std::endl;
     } catch (const std::invalid_argument &fallo) {
