@@ -99,13 +99,13 @@ ListaDEnlazada<T>::ListaDEnlazada() : cabecera(nullptr), cola(nullptr), tamañoL
 
 template<class T>
 ListaDEnlazada<T>::ListaDEnlazada(const ListaDEnlazada<T> &origen) : tamañoListaD(0) {
-    Nodo *p;
-    cabecera = nullptr;
+    Nodo *NodoOriginal;
     cola = nullptr;
-    p = origen.cabecera;
-    while (p != nullptr) {
-        insertaFin(p->dato);
-        p = p->siguiente;
+    cabecera = nullptr;
+    NodoOriginal = origen.cabecera;
+    while (NodoOriginal != nullptr) {
+        insertaFin(NodoOriginal->dato);
+        NodoOriginal = NodoOriginal->siguiente;
     }
 }
 
@@ -114,14 +114,14 @@ ListaDEnlazada<T> &ListaDEnlazada<T>::operator=(const ListaDEnlazada<T> &origen)
     while (cabecera != nullptr) {
         borraFinal();
     }
-    Nodo *p;
+    Nodo *NodoOriginal;
     cabecera = nullptr;
     cola = nullptr;
-    p = origen.cabecera;
+    NodoOriginal = origen.cabecera;
     tamañoListaD = 0;
-    while (p != nullptr) {
-        insertaFin(p->dato);
-        p = p->siguiente;
+    while (NodoOriginal != nullptr) {
+        insertaFin(NodoOriginal->dato);
+        NodoOriginal = NodoOriginal->siguiente;
     }
 
     return *this;
@@ -163,12 +163,15 @@ void ListaDEnlazada<T>::insertaInicio(const T &objeto) {
     Nodo *nuevoInicio;
     nuevoInicio = new Nodo(objeto, nullptr, cabecera);
     tamañoListaD++;
-    if (cabecera != nullptr) {
-        cabecera->anterior = nuevoInicio;
-    }
+
     if (cola == nullptr) {
         cola = nuevoInicio;
     }
+
+    if (cabecera != nullptr) {
+        cabecera->anterior = nuevoInicio;
+    }
+
     cabecera = nuevoInicio;
 }
 
@@ -243,12 +246,13 @@ void ListaDEnlazada<T>::borraFinal() {
 template<class T>
 void ListaDEnlazada<T>::borra(Iterador &i) {
     if (i.nodo == nullptr) {
-        throw std::invalid_argument("ListaDEnlazada<T>::borra:iterador nulo");
+        throw std::invalid_argument("[ListaDEnlazada<T>::borra]:El iterador no apunta a ningun nodo");
     }
     if (cabecera == nullptr || cola == nullptr) {
-        throw std::invalid_argument("ListaDEnlazada<T>::borra:La lista esta vacia");
+        throw std::invalid_argument("[ListaDEnlazada<T>::borra]:La lista no tiene nodos");
     }
-    if (cabecera == cola) {
+
+    if (cola == cabecera) {
         //es decir solo hay un elemento
         cabecera = nullptr;
         cola = nullptr; //las dos a nullptr porq se va a qedar la lista vacia
