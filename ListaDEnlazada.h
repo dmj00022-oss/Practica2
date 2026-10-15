@@ -266,7 +266,6 @@ void ListaDEnlazada<T>::borra(Iterador &i) {
                 i.nodo->siguiente->anterior = i.nodo->anterior;
                 tamañoListaD--;
                 delete i.nodo;
-                //preguntar al profesor si habria que apuntar a null despues del delete
             }
         }
     }
@@ -289,6 +288,7 @@ ListaDEnlazada<T> ListaDEnlazada<T>::concatena(const ListaDEnlazada<T> &nuevaLis
     }
     return listaFinal;
 }
+
 
 template<typename T>
 ListaDEnlazada<T> ListaDEnlazada<T>::operator+(const ListaDEnlazada<T> &nuevaLista) {
