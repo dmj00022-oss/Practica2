@@ -71,7 +71,7 @@ public:
 
     T &fin();
 
-    Iterador iterador() const; //david de este hace tmb el que devuelve 
+    Iterador iterador() const;
 
     void insertaInicio(const T &objeto);
 
@@ -94,6 +94,7 @@ public:
 
 template<class T>
 ListaDEnlazada<T>::ListaDEnlazada() : cabecera(nullptr), cola(nullptr), tamañoListaD(0) {
+
 }
 
 template<class T>
@@ -111,7 +112,7 @@ ListaDEnlazada<T>::ListaDEnlazada(const ListaDEnlazada<T> &origen) : tamañoList
 template<class T>
 ListaDEnlazada<T> &ListaDEnlazada<T>::operator=(const ListaDEnlazada<T> &origen) {
     while (cabecera != nullptr) {
-        borraInicio();
+        borraFinal();
     }
     Nodo *p;
     cabecera = nullptr;
@@ -128,13 +129,10 @@ ListaDEnlazada<T> &ListaDEnlazada<T>::operator=(const ListaDEnlazada<T> &origen)
 
 template<typename T>
 ListaDEnlazada<T>::~ListaDEnlazada() {
-    while (cabecera) {
-        Nodo *aBorrar = cabecera;
-        cabecera = cabecera->siguiente;
-        delete aBorrar;
+    while (cabecera!=nullptr) {
+        borraInicio();
     } // al salir de aqui cabecera apunta al siguiente del ultimo , por tanto a null
 
-    cola = nullptr;
     tamañoListaD = 0;
 }
 
@@ -155,10 +153,8 @@ T &ListaDEnlazada<T>::fin() {
     return cola->dato;
 }
 
-//este es el q molina quiere preguntar algo
 template<class T>
-typename ListaDEnlazada<T>::Iterador ListaDEnlazada<T>::iterador() const {
-    //con typename le aseguras al compiladorr que lo que devuelves es una clase/tipo y no una variable.
+typename ListaDEnlazada<T>::Iterador ListaDEnlazada<T>::iterador() const {    //typename ListaDEnlazada<T>::Iterador   // "esto es un tipo"
     return Iterador(cabecera);
 }
 
