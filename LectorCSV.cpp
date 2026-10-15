@@ -53,7 +53,7 @@ bool LectorCSV::cargar(VDinamico<Especie> &vector, const std::string& rutaFicher
         vector.insertar(Especie(codigo, nombreComun, nombreCientifico,pasarDeStringAPlanta(tipoPlanta)));
 
     }
-    numeroEspecies_= vector.tamañoLogic();
+    numeroEspecies_= vector.tamanioLogic();
     return true;
 }
 

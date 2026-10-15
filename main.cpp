@@ -13,7 +13,7 @@
 //prueba 5
 VDinamico<Especie *> getEspNComun(VDinamico<Especie> &vEspecie) {
     VDinamico<Especie *> auxiliar;
-    for (int i = 0; i < vEspecie.tamañoLogic(); i++) {
+    for (int i = 0; i < vEspecie.tamanioLogic(); i++) {
         if (vEspecie[i].getNombreComun() != "")
             auxiliar.insertar(&vEspecie[i]);
     }
@@ -23,7 +23,7 @@ VDinamico<Especie *> getEspNComun(VDinamico<Especie> &vEspecie) {
 //prueba 7
 VDinamico<Especie *> buscaPalabra(VDinamico<Especie> &orden, const std::string &cad) {
     VDinamico<Especie *> sol;
-    for (int i = 0; i < orden.tamañoLogic(); i++) {
+    for (int i = 0; i < orden.tamanioLogic(); i++) {
         int j = 0;
         std::string cadenaEntera = orden[i].getNombreCientifico();
         std::string nombre = " ";
@@ -185,7 +185,7 @@ int main() {
         //prueba 4
         VDinamico<Especie *> espe = controlDelParque.listadoEspeciesSubNbre("rosa");
         std::cout << "Especies con subnombre [rosa]: " << std::endl;
-        for (int i = 0; i < espe.tamañoLogic(); i++) {
+        for (int i = 0; i < espe.tamanioLogic(); i++) {
             std::cout << "Posicion: " << i << std::endl;
             std::cout << " Codigo= " << espe[i]->getCodigoEspecie() << std::endl;
             std::cout << " NombreCient.=" << espe[i]->getNombreCientifico() << std::endl;

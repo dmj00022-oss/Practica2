@@ -29,7 +29,7 @@ bool Parque::existeNombreComun(const std::string &nombreComun) {
     if (nombreComun=="") {
         throw std::invalid_argument("Parque::existeNombreComun:El nombre pasado esta vacio");
     }
-    for (int i=0;i<especies.tamañoLogic();i++) {
+    for (int i=0;i<especies.tamanioLogic();i++) {
         if (especies[i]->getNombreComun()==nombreComun) {
             return true;
         }
@@ -41,7 +41,7 @@ bool Parque::existeNombreCientifico(const std::string &nombreCientifico) {
     if (nombreCientifico=="") {
         throw std::invalid_argument("Parque::existeNombreCientifico:El nombre pasado esta vacio");
     }
-    for (int i=0;i<especies.tamañoLogic();i++) {
+    for (int i=0;i<especies.tamanioLogic();i++) {
         if (nombreCientifico==especies[i]->getNombreCientifico()) {
             return true;
         }
@@ -67,7 +67,7 @@ void Parque::setNombreParque(const std::string &nombre_del_parque) {
 
 
 void Parque::borraEspecie(const std::string &nombre_comun) {
-    for (int i=0;i<especies.tamañoLogic();i++) {
+    for (int i=0;i<especies.tamanioLogic();i++) {
         if (especies[i]->getNombreComun()==nombre_comun) {
             especies.borrar(i);
             i--;

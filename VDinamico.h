@@ -42,7 +42,7 @@ public:
     // se pone el & para poder escribir despues sobre el, si no lo tuviera solo podriamos leerlo, etnoces por ejemplo un Dato a= vec[3] , no nos dejaria hacer despues un a=100; ya que solo seria de lectura y no lectura y escritura
     T borrar(unsigned long int posicion = UINT_MAX);
 
-    unsigned long int tamañoLogic();
+    unsigned long int tamanioLogic();
 
     void ordenar();
 
@@ -313,7 +313,7 @@ VDinamico<T>::~VDinamico() {
  * @return numero de datos del vector
  */
 template<class T>
-unsigned long int VDinamico<T>::tamañoLogic() {
+unsigned long int VDinamico<T>::tamanioLogic() {
     return tamañoLogico; //
 }
 

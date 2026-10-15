@@ -7,7 +7,7 @@
 #include "ControlParques.h"
 
 void ControlParques::enlazarLasEspeciesEnParques() {
-    for (unsigned long int i = 0; i < varieties.tamañoLogic(); i++) {
+    for (unsigned long int i = 0; i < varieties.tamanioLogic(); i++) {
         TiposPlanta tipoDePlanta = varieties[i].getTipoPlanta();
         if (tipoDePlanta == ARBUSTO || tipoDePlanta == CONIFERA || tipoDePlanta == PALMACEA ||
             tipoDePlanta == HERB_PERENNES || tipoDePlanta == FRONDOSA) {
@@ -83,7 +83,7 @@ int ControlParques::contarEspecieParque(const std::string &nombreComun) {
 
 VDinamico<Especie *> ControlParques::listadoEspeciesSubNbre(const std::string &nombre) {
     VDinamico<Especie *> listado;
-    for (int i = 0; i < varieties.tamañoLogic(); i++) {
+    for (int i = 0; i < varieties.tamanioLogic(); i++) {
         if (varieties[i].getNombreCientifico().find(nombre) != -1) {
             //si se ha encontrado:
             listado.insertar(&varieties[i]);
@@ -116,7 +116,7 @@ void ControlParques::eliminaEspecieNombreComun(const std::string &nombreEspecieC
         iterador.siguiente();
     }
     int i=0;
-    while (i<varieties.tamañoLogic()) {
+    while (i<varieties.tamanioLogic()) {
         if (varieties[i].getNombreComun() == nombreEspecieComun)
             varieties.borrar(i);
         i++;
