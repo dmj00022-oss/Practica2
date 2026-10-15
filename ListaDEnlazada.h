@@ -111,7 +111,7 @@ ListaDEnlazada<T>::ListaDEnlazada(const ListaDEnlazada<T> &origen) : tamanioDeLa
 
 template<class T>
 ListaDEnlazada<T> &ListaDEnlazada<T>::operator=(const ListaDEnlazada<T> &origen) {
-    while (cabecera != nullptr) {
+    while (cola != nullptr) {
         borraFinal();
     }
     Nodo *NodoOriginal;

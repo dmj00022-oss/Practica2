@@ -64,7 +64,7 @@ int main() {
         //c)
         std::cout << std::endl;
         std::cout << "SEGUNDA PRUEBA: " << std::endl;
-        for (int i = 1; i <= 98; i++) {
+        for (int i = 98; i >= 1; i--) {
             prog1.insertaInicio(i);
         }
         mostrarPrueba1(prog1);
