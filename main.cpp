@@ -139,16 +139,16 @@ int main() {
         std::cout << std::endl;
         if (p) {
             if (p->existeNombreComun("Eucalipto rojo"))
-                std::cout <<"En el PARQUE PRINCESA LEONOR se encuentra la especie cuyo nombre común es eucalipto rojo. " <<std::endl;
+                std::cout <<"En el PARQUE PRINCESA LEONOR se encuentra la especie cuyo nombre comun es eucalipto rojo. " <<std::endl;
             else
-                std::cout <<"En el PARQUE PRINCESA LEONOR no se encuentra la especie cuyo nombre común es eucalipto rojo. "<< std::endl;
+                std::cout <<"En el PARQUE PRINCESA LEONOR no se encuentra la especie cuyo nombre comun es eucalipto rojo. "<< std::endl;
         }
 
         if (p) {
             if (p->existeNombreComun("Arce de sierra"))
-                std::cout <<"En el PARQUE PRINCESA LEONOR se encuentra la especie cuyo nombre común es Arce de sierra. " <<std::endl;
+                std::cout <<"En el PARQUE PRINCESA LEONOR se encuentra la especie cuyo nombre comun es Arce de sierra. " <<std::endl;
             else
-                std::cout <<"En el PARQUE PRINCESA LEONOR no se encuentra la especie cuyo nombre común es Arce de sierra. "<< std::endl;
+                std::cout <<"En el PARQUE PRINCESA LEONOR no se encuentra la especie cuyo nombre comun es Arce de sierra. "<< std::endl;
         }
 
         //prueba 2
