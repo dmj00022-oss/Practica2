@@ -15,18 +15,18 @@ private :
         Nodo *anterior, *siguiente;
 
         /**
-             * @brief crea un nodo con el dato y los enlaces dados
-             * @param aDato dato que guarda el nodo
-             * @param aAnterior nodo anterior
-             * @param aSiguiente nodo siguiente
-             */
+         * @brief crea un nodo con el dato y los enlaces dados
+         * @param aDato dato que guarda el nodo
+         * @param aAnterior nodo anterior
+         * @param aSiguiente nodo siguiente
+         */
         Nodo(const T &aDato, Nodo *aAnterior, Nodo *aSiguiente) : dato(aDato), anterior(aAnterior),
                                                                   siguiente(aSiguiente) {
         }
 
         /**
-             * @brief Destructor del nodo
-             */
+         * @brief Destructor del nodo
+         */
         ~Nodo() {
         }
     };
