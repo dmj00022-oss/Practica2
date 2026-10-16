@@ -3,7 +3,7 @@
 //
 
 #include "Parque.h"
-Parque::Parque():codigoParque(0),nombreDelParque(" ") {  //si tenemos q hacer lo q hace david de poner tmb el vector, en el defecto como lo ponemos?
+Parque::Parque():codigoParque(0),nombreDelParque(" ") {
 
 }
 

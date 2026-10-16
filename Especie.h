@@ -9,7 +9,7 @@
 
 enum TiposPlanta {
     ARBUSTO, CONIFERA, FRONDOSA, SUBTROPICAL_TROPICAL, CACTACEA_SUCULENTA,
-    TAPIZANTE_TREPADORA, HERB_PERENNES, PALMACEA, HERB_ANUAL, HERB_ANUALES, OTRO // cambio el no por OTRO
+    TAPIZANTE_TREPADORA, HERB_PERENNES, PALMACEA, HERB_ANUAL, HERB_ANUALES, OTRO
 };
 
 inline std::string pasarDePlantaAString(const TiposPlanta &tipo) {
@@ -26,7 +26,7 @@ inline std::string pasarDePlantaAString(const TiposPlanta &tipo) {
         case HERB_ANUALES: return "HERB_ANUALES";
         case OTRO: return "";
         default:
-            throw std::invalid_argument("[pasarDePlantaAString]: Este tipo de planta no se encuentra en la lista.");  // preguntar si se puede poner otro error
+            throw std::invalid_argument("[pasarDePlantaAString]: Este tipo de planta no se encuentra en la lista.");
     }
 }
 
